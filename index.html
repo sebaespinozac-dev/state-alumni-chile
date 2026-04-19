@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>State Alumni Chile — U.S. Embassy Program</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,600;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   TOKENS
+═══════════════════════════════════════════════════════════════ */
+:root {
+  --navy:      #002868;
+  --navy-dk:   #001540;
+  --navy-md:   #1A3F78;
+  --navy-lt:   #E8EFF8;
+  --red:       #BF0A30;
+  --red-lt:    #F8E8EC;
+  --gold:      #C9A84C;
+  --ink:       #0F1A2E;
+  --ink-2:     #3D4F6B;
+  --ink-3:     #7A8BA6;
+  --surface:   #FAFBFD;
+  --surface-2: #F2F5FA;
+  --rule:      #DDE3EE;
+  --white:     #FFFFFF;
+
+  --fd: 'Playfair Display', Georgia, serif;
+  --fu: 'Inter', system-ui, sans-serif;
+  --ease: cubic-bezier(0.16,1,0.3,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--fu);background:var(--surface);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+button{border:none;background:none;cursor:pointer;font-family:inherit}
+.wrap{max-width:1160px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+
+/* ═══════════════════════════════════════════════════════════════
+   REVEAL
+═══════════════════════════════════════════════════════════════ */
+.r{opacity:0;transform:translateY(22px);transition:opacity .75s var(--ease),transform .75s var(--ease)}
+.r.on{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}
+.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+.d5{transition-delay:.40s}
+
+/* ═══════════════════════════════════════════════════════════════
+   SUPER HEADER
+═══════════════════════════════════════════════════════════════ */
+.super{background:#0B1220;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.super .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.super-l{display:flex;align-items:center;gap:8px;font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.super-star{color:var(--gold);font-size:9px}
+.super-nav{display:flex;gap:18px;flex-wrap:wrap}
+.super-nav a{font-size:10.5px;font-weight:600;letter-spacing:.05em;color:rgba(255,255,255,.35);transition:color .2s}
+.super-nav a:hover{color:rgba(255,255,255,.7)}
+.super-nav a.on{color:#4ADE80;font-weight:700}
+
+/* ═══════════════════════════════════════════════════════════════
+   NAVBAR
+═══════════════════════════════════════════════════════════════ */
+.nav{
+  background:var(--white);
+  border-bottom:4px solid var(--navy);
+  position:sticky;top:0;z-index:300;
+  box-shadow:0 2px 24px rgba(0,40,104,.09);
+}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:70px}
+
+/* ── Logo ── */
+.logo{display:flex;align-items:center;gap:14px}
+.logo-img-wrap{position:relative;height:46px;display:flex;align-items:center}
+.logo-img{height:46px;width:auto;display:block}
+.logo-img-fallback{
+  display:none;align-items:center;gap:10px;
+}
+.logo-icon{
+  width:46px;height:46px;
+  background:var(--navy);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:900;color:var(--white);
+  letter-spacing:.04em;font-family:var(--fu);
+  position:relative;overflow:hidden;
+}
+.logo-icon::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,var(--navy) 50%,var(--red) 100%);
+  opacity:.6;
+}
+.logo-icon span{position:relative;z-index:1}
+.logo-sep{width:1px;height:38px;background:var(--rule)}
+.logo-text{display:flex;flex-direction:column}
+.logo-name{font-family:var(--fd);font-size:20px;font-weight:700;color:var(--navy);line-height:1.1;letter-spacing:-.01em}
+.logo-sub{font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-top:3px}
+.logo-embassy{font-size:9.5px;font-weight:500;color:var(--ink-3);letter-spacing:.04em;margin-top:1px}
+
+/* ── Nav links ── */
+.nav-links{display:flex;align-items:center;gap:0}
+.nl{
+  padding:8px 14px;font-size:13px;font-weight:600;
+  color:var(--ink-2);border-bottom:2.5px solid transparent;
+  transition:color .2s,border-color .2s;white-space:nowrap;
+}
+.nl:hover,.nl.active{color:var(--navy);border-bottom-color:var(--navy)}
+.nl-summit{
+  margin-left:10px;padding:10px 20px;
+  background:var(--navy);color:var(--white) !important;
+  font-size:12.5px;font-weight:700;letter-spacing:.04em;
+  border-bottom:none !important;
+  display:flex;align-items:center;gap:7px;
+  transition:background .2s,transform .15s;
+}
+.nl-summit:hover{background:var(--navy-md);transform:translateY(-1px)}
+.nl-summit i{font-size:11px}
+
+.ham{display:none;flex-direction:column;gap:5px;padding:7px;cursor:pointer}
+.ham span{width:22px;height:2px;background:var(--navy);border-radius:2px;transition:.3s}
+
+/* ═══════════════════════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════════════════════ */
+.hero{
+  background:var(--white);
+  overflow:hidden;
+  border-bottom:1px solid var(--rule);
+}
+.hero-inner{
+  display:grid;grid-template-columns:52% 48%;
+  min-height:600px;
+}
+.hero-left{
+  padding:clamp(60px,8vw,100px) clamp(20px,4vw,48px) clamp(60px,8vw,100px) clamp(20px,5vw,80px);
+  display:flex;flex-direction:column;justify-content:center;
+  border-right:1px solid var(--rule);
+}
+.hero-flag-row{display:flex;align-items:center;gap:10px;margin-bottom:28px}
+.hf{font-size:20px;line-height:1}
+.hf-sep{width:24px;height:1px;background:var(--rule)}
+.hf-label{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+
+.hero-title{
+  font-family:var(--fd);
+  font-size:clamp(44px,5.5vw,80px);
+  font-weight:800;line-height:1.06;
+  letter-spacing:-.03em;
+  color:var(--ink);margin-bottom:24px;
+}
+.hero-title .t-navy{color:var(--navy)}
+.hero-title .t-red{color:var(--red)}
+.hero-title .t-italic{font-style:italic}
+
+.hero-desc{
+  font-size:clamp(15px,1.5vw,17px);font-weight:400;
+  line-height:1.8;color:var(--ink-2);
+  max-width:500px;margin-bottom:clamp(28px,4vw,40px);
+}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-a{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:13px 28px;background:var(--navy);color:var(--white);
+  font-size:13.5px;font-weight:700;letter-spacing:.03em;
+  transition:background .2s,transform .15s;
+}
+.btn-a:hover{background:var(--navy-md);transform:translateY(-1px)}
+.btn-b{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:13px 24px;border:1.5px solid var(--rule);
+  color:var(--ink-2);font-size:13.5px;font-weight:600;
+  transition:border-color .2s,color .2s;
+}
+.btn-b:hover{border-color:var(--navy);color:var(--navy)}
+
+.hero-right{
+  position:relative;overflow:hidden;
+  background:var(--navy-dk);
+}
+.hero-right img{
+  width:100%;height:100%;object-fit:cover;
+  opacity:.65;transition:transform 8s ease;
+}
+.hero-right:hover img{transform:scale(1.04)}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(0,21,64,.7) 0%,transparent 60%);
+}
+.hero-stat-cards{
+  position:absolute;bottom:32px;left:32px;
+  display:flex;flex-direction:column;gap:10px;
+}
+.hsc{
+  background:rgba(255,255,255,.96);
+  padding:14px 20px;display:flex;align-items:center;gap:14px;
+  backdrop-filter:blur(12px);
+}
+.hsc-num{
+  font-family:var(--fd);font-size:28px;font-weight:800;
+  color:var(--navy);line-height:1;letter-spacing:-.03em;
+}
+.hsc-num sup{font-size:14px;color:var(--red);vertical-align:super}
+.hsc-label{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+
+/* Flag bar */
+.flag-bar{height:4px;background:linear-gradient(90deg,var(--navy) 0%,var(--navy) 50%,var(--red) 50%,var(--red) 100%)}
+
+/* ═══════════════════════════════════════════════════════════════
+   STATS ROW
+═══════════════════════════════════════════════════════════════ */
+.stats{background:var(--navy);padding:clamp(24px,4vw,40px) 0}
+.stats-row{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-left:1px solid rgba(255,255,255,.1);
+}
+.si{
+  padding:0 clamp(20px,3vw,40px);
+  border-right:1px solid rgba(255,255,255,.1);
+  text-align:center;
+}
+.si-n{
+  font-family:var(--fd);font-size:clamp(28px,4vw,44px);
+  font-weight:800;color:var(--white);line-height:1;letter-spacing:-.04em;
+}
+.si-n sup{font-size:55%;color:var(--gold);letter-spacing:0;vertical-align:super}
+.si-l{
+  font-size:10.5px;font-weight:700;letter-spacing:.13em;
+  text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:7px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION BASE
+═══════════════════════════════════════════════════════════════ */
+.sec{padding:clamp(72px,10vw,120px) 0}
+.sec+.sec{border-top:1px solid var(--rule)}
+.sec-alt{background:var(--surface-2)}
+.sec-dk{background:var(--navy-dk)}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:10.5px;font-weight:800;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--red);margin-bottom:14px;
+}
+.eyebrow::before{content:'';width:22px;height:1.5px;background:var(--red)}
+.eyebrow-g{color:var(--gold)}
+.eyebrow-g::before{background:var(--gold)}
+
+.sec-title{
+  font-family:var(--fd);
+  font-size:clamp(28px,4vw,50px);
+  font-weight:700;line-height:1.12;
+  letter-spacing:-.025em;color:var(--ink);
+  margin-bottom:18px;
+}
+.sec-title em{font-style:italic;color:var(--navy)}
+.sec-title-w{color:var(--white)}
+.sec-title-w em{color:var(--gold)}
+
+/* ═══════════════════════════════════════════════════════════════
+   QUIÉNES SOMOS
+═══════════════════════════════════════════════════════════════ */
+.about-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:clamp(48px,7vw,96px);align-items:center;
+}
+.about-lead{
+  font-size:clamp(15px,1.5vw,17px);font-weight:400;
+  line-height:1.85;color:var(--ink-2);margin-bottom:24px;
+}
+.about-points{
+  margin:0 0 32px;
+  display:grid;grid-template-columns:1fr 1fr;gap:12px;
+}
+.ap{
+  padding:14px 16px;background:var(--navy-lt);
+  border-left:2.5px solid var(--navy);
+}
+.ap-title{font-size:12px;font-weight:700;color:var(--navy);margin-bottom:3px}
+.ap-text{font-size:12px;line-height:1.6;color:var(--ink-2)}
+
+.about-img-wrap{position:relative}
+.about-img{
+  width:100%;aspect-ratio:4/5;
+  object-fit:cover;object-position:center top;
+  display:block;
+}
+.about-pull{
+  position:absolute;bottom:-20px;right:-20px;
+  background:var(--red);padding:20px 24px;max-width:210px;
+}
+.about-pull q{
+  font-family:var(--fd);font-size:15px;font-style:italic;
+  font-weight:600;color:var(--white);line-height:1.5;
+  display:block;margin-bottom:10px;
+}
+.about-pull-sig{
+  font-size:10px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(255,255,255,.6);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PROGRAMAS
+═══════════════════════════════════════════════════════════════ */
+.prog-header{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  margin-bottom:clamp(36px,5vw,56px);
+  flex-wrap:wrap;gap:16px;
+}
+.prog-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:2px;
+}
+.pc{
+  background:var(--white);
+  padding:clamp(28px,4vw,44px);
+  position:relative;overflow:hidden;
+  border-bottom:3px solid transparent;
+  transition:border-color .25s,box-shadow .25s,transform .25s;
+}
+.pc:hover{
+  border-bottom-color:var(--navy);
+  box-shadow:0 8px 36px rgba(0,40,104,.12);
+  transform:translateY(-2px);
+}
+.pc-stripe{
+  position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:var(--navy);transform:scaleY(0);transform-origin:bottom;
+  transition:transform .35s var(--ease);
+}
+.pc:hover .pc-stripe{transform:scaleY(1)}
+.pc-badge{
+  display:inline-flex;align-items:center;gap:0;
+  margin-bottom:22px;
+}
+.pc-badge-abbr{
+  background:var(--navy);color:var(--white);
+  font-family:var(--fd);font-size:20px;font-weight:800;
+  padding:8px 14px;letter-spacing:-.01em;line-height:1;
+}
+.pc-badge-name{
+  background:var(--navy-lt);
+  padding:8px 12px;
+  font-size:9.5px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--navy-md);
+  line-height:1.4;max-width:140px;
+}
+.pc-title{
+  font-family:var(--fd);font-size:clamp(18px,2.2vw,23px);
+  font-weight:700;color:var(--ink);margin-bottom:12px;line-height:1.2;
+}
+.pc-desc{
+  font-size:14px;line-height:1.78;color:var(--ink-2);margin-bottom:20px;
+}
+.pc-link{
+  font-size:11.5px;font-weight:800;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--navy);
+  display:inline-flex;align-items:center;gap:6px;transition:gap .2s;
+}
+.pc-link:hover{gap:10px}
+
+/* ═══════════════════════════════════════════════════════════════
+   EVENTOS
+═══════════════════════════════════════════════════════════════ */
+.ev-grid{display:grid;gap:2px}
+.ev{
+  display:grid;grid-template-columns:180px 1fr;
+  background:var(--white);
+  border-top:3px solid var(--navy);
+  transition:box-shadow .25s;
+}
+.ev--red{border-top-color:var(--red)}
+.ev--gold{border-top-color:var(--gold)}
+.ev:hover{box-shadow:0 6px 32px rgba(0,40,104,.1)}
+
+.ev-left{
+  padding:clamp(24px,3.5vw,36px);
+  border-right:1px solid var(--rule);
+  display:flex;flex-direction:column;gap:12px;
+}
+.ev-year{
+  font-family:var(--fd);font-size:56px;font-weight:800;
+  color:var(--rule);line-height:1;letter-spacing:-.05em;
+}
+.ev-when{
+  font-size:11.5px;font-weight:600;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--ink-3);line-height:1.6;
+}
+.ev-tag{
+  display:inline-block;padding:4px 10px;
+  background:var(--navy);color:var(--white);
+  font-size:9.5px;font-weight:800;letter-spacing:.12em;
+  text-transform:uppercase;width:fit-content;
+}
+.ev-tag--r{background:var(--red)}
+.ev-tag--g{background:var(--gold);color:var(--ink)}
+
+.ev-right{padding:clamp(24px,3.5vw,36px)}
+.ev-org{
+  font-size:10.5px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-3);margin-bottom:10px;
+  display:flex;align-items:center;gap:8px;
+}
+.ev-org::before{content:'';width:18px;height:1.5px;background:var(--red)}
+.ev-title{
+  font-family:var(--fd);font-size:clamp(20px,2.5vw,28px);
+  font-weight:700;color:var(--ink);line-height:1.2;
+  letter-spacing:-.02em;margin-bottom:12px;
+}
+.ev-desc{
+  font-size:14.5px;line-height:1.78;color:var(--ink-2);margin-bottom:18px;
+}
+.ev-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
+.ev-chip{
+  padding:3px 10px;border:1px solid var(--rule);
+  font-size:10.5px;font-weight:600;color:var(--ink-3);
+  letter-spacing:.05em;text-transform:uppercase;
+}
+.ev-meta{
+  display:flex;flex-wrap:wrap;gap:18px;
+  font-size:12px;color:var(--ink-3);font-weight:500;
+}
+.ev-meta i{color:var(--navy);margin-right:4px;font-size:10px}
+
+/* ═══════════════════════════════════════════════════════════════
+   DIRECTORIO — PREMIUM TEAM SECTION
+═══════════════════════════════════════════════════════════════ */
+.dir-bg{background:var(--navy-dk);color:var(--white)}
+.dir-bg .eyebrow{color:rgba(201,168,76,.9)}
+.dir-bg .eyebrow::before{background:rgba(201,168,76,.9)}
+
+/* ── Presidenta featured ── */
+.dir-hero{
+  display:grid;grid-template-columns:320px 1fr;
+  gap:0;margin-bottom:3px;
+  background:rgba(255,255,255,.04);
+}
+.dir-hero-photo{
+  position:relative;overflow:hidden;
+  background:var(--navy-md);
+  min-height:380px;
+}
+.dir-hero-photo img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center top;
+  transition:transform .6s var(--ease);
+}
+.dir-hero:hover .dir-hero-photo img{transform:scale(1.03)}
+.dir-hero-initials{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--fd);font-size:80px;font-weight:800;
+  color:rgba(255,255,255,.1);
+  background:linear-gradient(135deg,var(--navy-md),var(--navy-dk));
+}
+.dir-hero-body{
+  padding:clamp(36px,5vw,56px);
+  display:flex;flex-direction:column;justify-content:center;
+  border-left:1px solid rgba(255,255,255,.08);
+}
+.dir-hero-role{
+  font-size:10px;font-weight:800;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:12px;
+  display:flex;align-items:center;gap:8px;
+}
+.dir-hero-role::before{content:'';width:20px;height:1.5px;background:var(--gold)}
+.dir-hero-name{
+  font-family:var(--fd);
+  font-size:clamp(30px,3.5vw,44px);
+  font-weight:700;color:var(--white);
+  line-height:1.08;letter-spacing:-.025em;
+  margin-bottom:18px;
+}
+.dir-hero-bio{
+  font-size:15px;line-height:1.85;
+  color:rgba(255,255,255,.65);margin-bottom:22px;
+}
+.dir-hero-prog{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:7px 14px;border:1px solid rgba(255,255,255,.12);
+  font-size:10px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:rgba(255,255,255,.5);
+  width:fit-content;
+}
+.dir-hero-prog i{color:var(--gold);font-size:9px}
+
+/* ── Team grid ── */
+.dir-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:3px;
+}
+.dc{
+  background:rgba(255,255,255,.04);
+  padding:clamp(24px,3.5vw,36px);
+  transition:background .25s;
+  position:relative;overflow:hidden;
+}
+.dc:hover{background:rgba(255,255,255,.07)}
+.dc::after{
+  content:'';position:absolute;
+  bottom:0;left:0;right:0;height:2px;
+  background:var(--gold);transform:scaleX(0);
+  transform-origin:left;transition:transform .3s var(--ease);
+}
+.dc:hover::after{transform:scaleX(1)}
+
+/* ── Photo circle ── */
+.dc-photo{
+  width:72px;height:72px;border-radius:50%;
+  overflow:hidden;margin-bottom:18px;
+  position:relative;
+  border:2.5px solid rgba(255,255,255,.1);
+  transition:border-color .25s;
+}
+.dc:hover .dc-photo{border-color:var(--gold)}
+.dc-photo img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center top;
+}
+.dc-photo-init{
+  width:100%;height:100%;
+  background:linear-gradient(135deg,rgba(26,63,120,.9),rgba(0,21,64,.9));
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--fd);font-size:24px;font-weight:700;
+  color:rgba(255,255,255,.35);
+}
+.dc-role{
+  font-size:9.5px;font-weight:800;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--gold);
+  margin-bottom:6px;opacity:.9;
+}
+.dc-name{
+  font-family:var(--fd);font-size:19px;font-weight:700;
+  color:var(--white);margin-bottom:10px;line-height:1.2;
+}
+.dc-bio{
+  font-size:12.5px;line-height:1.75;
+  color:rgba(255,255,255,.5);
+}
+
+/* Embajada card */
+.dc-embassy{
+  background:rgba(255,255,255,.02);
+  border:1px dashed rgba(255,255,255,.1);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+  gap:10px;
+  min-height:220px;
+}
+.dc-embassy-flags{font-size:26px;letter-spacing:4px}
+.dc-embassy-label{
+  font-size:9.5px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:rgba(255,255,255,.25);
+}
+.dc-embassy-name{
+  font-family:var(--fd);font-size:14px;font-weight:600;
+  color:rgba(255,255,255,.5);line-height:1.4;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SUMMIT BANNER
+═══════════════════════════════════════════════════════════════ */
+.summit-bn{
+  background:var(--ink);
+  padding:clamp(56px,8vw,88px) 0;
+  position:relative;overflow:hidden;
+}
+.summit-bn::before{
+  content:'AI';
+  position:absolute;right:-20px;top:50%;transform:translateY(-50%);
+  font-family:var(--fd);font-size:clamp(120px,18vw,240px);
+  font-weight:800;color:rgba(255,255,255,.025);
+  line-height:1;letter-spacing:-.05em;
+  pointer-events:none;user-select:none;
+}
+.summit-bn .wrap{
+  display:grid;grid-template-columns:1fr auto;
+  gap:clamp(32px,5vw,60px);align-items:center;
+  position:relative;z-index:2;
+}
+.sb-eyebrow{
+  font-size:10px;font-weight:800;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:14px;
+}
+.sb-title{
+  font-family:var(--fd);
+  font-size:clamp(22px,3.5vw,40px);
+  font-weight:800;color:var(--white);
+  line-height:1.1;letter-spacing:-.025em;margin-bottom:16px;
+}
+.sb-date{
+  display:flex;flex-wrap:wrap;gap:20px;
+  font-size:13px;color:rgba(255,255,255,.5);font-weight:500;
+}
+.sb-date span{display:flex;align-items:center;gap:6px}
+.sb-date i{color:var(--gold);font-size:11px}
+.sb-logos{
+  display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;
+}
+.sb-pill{
+  padding:4px 12px;border:1px solid rgba(255,255,255,.12);
+  font-size:10px;font-weight:800;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(255,255,255,.45);
+}
+.sb-cta{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:10px}
+.btn-summit{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:15px 30px;background:var(--white);color:var(--navy);
+  font-size:13.5px;font-weight:800;letter-spacing:.03em;
+  white-space:nowrap;
+  transition:background .2s,transform .15s,box-shadow .2s;
+}
+.btn-summit:hover{background:var(--navy-lt);transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,.25)}
+.sb-sub{font-size:11px;color:rgba(255,255,255,.3);text-align:center}
+
+/* ═══════════════════════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════════════════════ */
+.footer{background:#080E1C;padding:clamp(56px,8vw,80px) 0 0}
+.footer-grid{
+  display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr;
+  gap:clamp(28px,5vw,56px);
+  padding-bottom:clamp(40px,6vw,60px);
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+/* Brand col */
+.fb-logo{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.fb-logo img{height:36px;width:auto;filter:brightness(0) invert(1);opacity:.75}
+.fb-logo-fallback{
+  display:none;align-items:center;gap:10px;
+}
+.fb-logo-icon{
+  width:36px;height:36px;background:rgba(255,255,255,.08);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;color:rgba(255,255,255,.5);
+}
+.fb-name{
+  font-family:var(--fd);font-size:17px;font-weight:700;
+  color:var(--white);
+}
+.fb-sub{
+  font-size:9px;font-weight:800;letter-spacing:.16em;
+  text-transform:uppercase;color:rgba(255,255,255,.35);
+  margin-top:1px;
+}
+.fb-desc{
+  font-size:13px;line-height:1.8;
+  color:rgba(255,255,255,.4);margin-bottom:22px;
+  max-width:280px;
+}
+.fb-social{display:flex;gap:8px}
+.fsb{
+  width:34px;height:34px;border:1px solid rgba(255,255,255,.1);
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(255,255,255,.4);font-size:13px;
+  transition:all .2s;
+}
+.fsb:hover{border-color:rgba(255,255,255,.3);color:var(--white);background:rgba(255,255,255,.06)}
+
+.fc-title{
+  font-size:10px;font-weight:800;letter-spacing:.15em;
+  text-transform:uppercase;color:rgba(255,255,255,.35);
+  margin-bottom:18px;padding-bottom:10px;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.fc-links{display:flex;flex-direction:column;gap:9px}
+.fc-link{
+  font-size:13px;color:rgba(255,255,255,.45);
+  transition:color .2s,padding-left .2s;display:block;
+}
+.fc-link:hover{color:rgba(255,255,255,.85);padding-left:5px}
+
+.footer-btm{
+  padding:18px 0;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:12px;
+}
+.footer-legal{
+  font-size:11px;color:rgba(255,255,255,.28);
+}
+.footer-legal a{color:rgba(255,255,255,.38);transition:color .2s}
+.footer-legal a:hover{color:rgba(255,255,255,.7)}
+.footer-legal span{margin:0 7px;opacity:.3}
+.footer-flags{font-size:18px;display:flex;align-items:center;gap:6px}
+.footer-flags-sep{font-size:10px;color:rgba(255,255,255,.2)}
+
+/* ═══════════════════════════════════════════════════════════════
+   MOBILE MENU
+═══════════════════════════════════════════════════════════════ */
+.mob{
+  position:fixed;inset:0;z-index:500;
+  background:var(--navy-dk);
+  transform:translateX(105%);
+  transition:transform .38s var(--ease);
+  padding:24px;overflow-y:auto;
+}
+.mob.open{transform:none}
+.mob-close{
+  position:absolute;top:18px;right:18px;
+  width:40px;height:40px;
+  border:1px solid rgba(255,255,255,.12);
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(255,255,255,.5);font-size:16px;
+  transition:.2s;cursor:pointer;
+}
+.mob-close:hover{color:var(--white);background:rgba(255,255,255,.06)}
+.mob-brand{
+  font-family:var(--fd);font-size:22px;font-weight:700;
+  color:var(--white);margin:14px 0 36px;
+}
+.mob-nav{display:flex;flex-direction:column}
+.mob-nav a{
+  padding:13px 0;border-bottom:1px solid rgba(255,255,255,.07);
+  font-size:15px;font-weight:600;color:rgba(255,255,255,.6);
+  transition:color .2s,padding-left .2s;
+}
+.mob-nav a:hover{color:var(--white);padding-left:6px}
+.mob-summit{
+  margin-top:20px;padding:14px !important;border-bottom:none !important;
+  background:var(--white);color:var(--navy) !important;
+  font-weight:800 !important;text-align:center;font-size:14px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SCROLL TOP
+═══════════════════════════════════════════════════════════════ */
+.stb{
+  position:fixed;bottom:28px;right:28px;z-index:100;
+  width:42px;height:42px;
+  background:var(--navy);color:var(--white);
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;opacity:0;visibility:hidden;
+  transform:translateY(10px);transition:all .3s var(--ease);
+}
+.stb.on{opacity:1;visibility:visible;transform:none}
+.stb:hover{background:var(--navy-md)}
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════════════ */
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr}
+  .hero-right{aspect-ratio:16/9;min-height:0}
+  .about-grid{grid-template-columns:1fr}
+  .about-pull{display:none}
+  .prog-grid{grid-template-columns:1fr}
+  .dir-hero{grid-template-columns:1fr}
+  .dir-hero-photo{min-height:280px;aspect-ratio:16/7}
+  .dir-grid{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+}
+@media(max-width:768px){
+  .super{display:none}
+  .nav-links{display:none}
+  .ham{display:flex}
+  .stats-row{grid-template-columns:1fr 1fr}
+  .si{padding:18px;border-bottom:1px solid rgba(255,255,255,.1)}
+  .si:nth-child(2n){border-right:none}
+  .ev{grid-template-columns:1fr}
+  .ev-left{border-right:none;border-bottom:1px solid var(--rule);flex-direction:row;align-items:center;flex-wrap:wrap}
+  .dir-grid{grid-template-columns:1fr}
+  .summit-bn .wrap{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-btm{flex-direction:column;text-align:center}
+}
+@media(max-width:480px){
+  .hero-stat-cards{flex-direction:row;flex-wrap:wrap;gap:8px}
+  .about-points{grid-template-columns:1fr}
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   GALERÍA BICENTENARIO
+═══════════════════════════════════════════════════════════════ */
+.gal-intro{font-size:clamp(14px,1.4vw,16px);line-height:1.8;color:var(--ink-2);max-width:640px;margin-bottom:clamp(28px,4vw,40px)}
+
+/* Impact bar */
+.gal-impact{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-bottom:clamp(32px,5vw,52px)}
+.gal-imp{padding:20px 24px;background:var(--navy);text-align:center;border-right:1px solid rgba(255,255,255,.1)}
+.gal-imp:last-child{border-right:none}
+.gal-imp-n{font-family:var(--fd);font-size:clamp(24px,3vw,36px);font-weight:800;color:var(--white);line-height:1;letter-spacing:-.04em}
+.gal-imp-n sup{font-size:55%;color:var(--gold);letter-spacing:0;vertical-align:super}
+.gal-imp-l{font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:6px}
+
+/* Tabs */
+.gal-tabs{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:24px}
+.gal-tab{padding:9px 18px;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);background:var(--surface-2);border:1.5px solid var(--rule);cursor:pointer;transition:all .2s;font-family:var(--fu)}
+.gal-tab:hover{color:var(--navy);border-color:var(--navy);background:var(--navy-lt)}
+.gal-tab.on{background:var(--navy);color:var(--white);border-color:var(--navy)}
+.gal-tab--sp:hover{color:var(--red);border-color:var(--red);background:var(--red-lt)}
+.gal-tab--sp.on{background:var(--red);border-color:var(--red)}
+
+/* Panel */
+.gal-panel{display:none}
+.gal-panel.on{display:block}
+
+/* Hero */
+.gal-hero{position:relative;overflow:hidden;aspect-ratio:21/8;background:var(--navy-dk);margin-bottom:20px}
+.gal-hero img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .6s var(--ease)}
+.gal-hero:hover img{transform:scale(1.02)}
+.gal-hero-ov{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,21,64,.88) 0%,transparent 65%);display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(20px,4vw,48px)}
+.gal-hdate{font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.gal-hcity{font-family:var(--fd);font-size:clamp(26px,4vw,52px);font-weight:800;color:var(--white);line-height:1.05;letter-spacing:-.025em;margin-bottom:6px}
+.gal-hplace{font-size:12px;color:rgba(255,255,255,.55);margin-bottom:14px}
+.gal-hbadge{display:inline-flex;align-items:center;gap:7px;padding:5px 14px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.8);width:fit-content;backdrop-filter:blur(8px)}
+.gal-hbadge i{color:var(--gold);font-size:9px}
+
+/* Sub-section label */
+.gal-sub{display:flex;align-items:center;gap:12px;margin:24px 0 14px;font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--navy)}
+.gal-sub::after{content:'';flex:1;height:1px;background:var(--rule)}
+.gal-sub--side{color:var(--red)}
+
+/* Grid */
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:4px}
+.gal-grid--3{grid-template-columns:repeat(3,1fr)}
+.gal-item{position:relative;overflow:hidden;aspect-ratio:4/3;background:var(--navy-dk);cursor:pointer}
+.gal-item img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .4s var(--ease);display:block}
+.gal-item:hover img{transform:scale(1.08)}
+.gal-cap{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,21,64,.88) 0%,transparent 55%);display:flex;align-items:flex-end;padding:14px;opacity:0;transition:opacity .3s}
+.gal-item:hover .gal-cap{opacity:1}
+.gal-cap span{font-size:11.5px;font-weight:600;color:var(--white);line-height:1.4}
+
+/* Organizers strip */
+.gal-orgs{margin-top:clamp(36px,5vw,56px);padding:clamp(24px,3.5vw,36px);background:var(--surface-2);border:1px solid var(--rule);display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,4vw,40px)}
+.gal-org-title{font-size:9.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--rule);display:flex;align-items:center;gap:7px}
+.gal-org-title i{color:var(--navy);font-size:9px}
+.gal-org-list{display:flex;flex-direction:column;gap:6px}
+.gal-org-item{font-size:13px;color:var(--ink-2);font-weight:500;display:flex;align-items:center;gap:8px}
+.gal-org-item::before{content:'';width:4px;height:4px;background:var(--navy);border-radius:50%;flex-shrink:0}
+
+@media(max-width:1024px){
+  .gal-impact{grid-template-columns:repeat(2,1fr)}
+  .gal-grid{grid-template-columns:repeat(3,1fr)}
+  .gal-orgs{grid-template-columns:1fr 1fr}
+  .gal-hero{aspect-ratio:16/7}
+}
+@media(max-width:768px){
+  .gal-grid,.gal-grid--3{grid-template-columns:repeat(2,1fr)}
+  .gal-hero{aspect-ratio:16/9}
+  .gal-orgs{grid-template-columns:1fr}
+  .gal-tabs{gap:6px}
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════
+     SUPER HEADER
+════════════════════════════════════════════════ -->
+<div class="super">
+  <div class="wrap">
+    <div class="super-l">
+      <i class="fas fa-star super-star"></i>
+      U.S. Department of State · Bureau of Educational and Cultural Affairs
+    </div>
+    <nav class="super-nav">
+      <a href="#">ECA</a>
+      <a href="#" class="on">Alumni</a>
+      <a href="#">EducationUSA</a>
+      <a href="#">Exchanges</a>
+      <a href="#">J-1 Visa</a>
+    </nav>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     NAVBAR
+════════════════════════════════════════════════ -->
+<header class="nav" id="navbar">
+  <div class="wrap">
+
+    <!-- LOGO con fallback perfecto -->
+    <a href="index.html" class="logo">
+      <div class="logo-img-wrap">
+        <img
+          src="logo.png"
+          alt="State Alumni Chile"
+          class="logo-img"
+          id="logoImg"
+          onerror="this.style.display='none';document.getElementById('logoFallback').style.display='flex'">
+        <div class="logo-img-fallback" id="logoFallback">
+          <div class="logo-icon"><span>SAC</span></div>
+        </div>
+      </div>
+      <div class="logo-sep"></div>
+      <div class="logo-text">
+        <span class="logo-name">State Alumni Chile</span>
+        <span class="logo-sub">Connect · Empower · Inspire</span>
+        <span class="logo-embassy">U.S. Embassy Program</span>
+      </div>
+    </a>
+
+    <nav class="nav-links">
+      <a href="#quienes" class="nl">Quiénes somos</a>
+      <a href="#directorio" class="nl">Directorio</a>
+      <a href="#programas" class="nl">Programas</a>
+      <a href="#galeria" class="nl">Galería</a>
+      <a href="#eventos" class="nl">Noticias</a>
+      <a href="#footer" class="nl">Contacto</a>
+      <a href="summit.html" class="nl nl-summit">
+        <i class="fas fa-bolt"></i> Summit 2026
+      </a>
+    </nav>
+
+    <div class="ham" id="ham" onclick="openMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<!-- Flag bar -->
+<div class="flag-bar"></div>
+
+<!-- ════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════ -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+
+    <!-- Left -->
+    <div class="hero-left">
+      <div class="hero-flag-row r">
+        <span class="hf">🇺🇸</span>
+        <span class="hf-sep"></span>
+        <span class="hf">🇨🇱</span>
+        <span class="hf-sep"></span>
+        <span class="hf-label">Programa Oficial · Embajada de EE.UU. en Chile</span>
+      </div>
+      <h1 class="hero-title r d1">
+        Líderes que<br>
+        <span class="t-italic t-navy">transforman</span><br>
+        Chile<span class="t-red">.</span>
+      </h1>
+      <p class="hero-desc r d2">
+        State Alumni Chile reúne a egresados de programas del Departamento de Estado de los Estados Unidos. Una red de líderes comprometidos con el desarrollo de Chile y el fortalecimiento de las relaciones bilaterales.
+      </p>
+      <div class="hero-btns r d3">
+        <a href="#programas" class="btn-a">
+          <i class="fas fa-globe-americas"></i> Ver programas
+        </a>
+        <a href="#quienes" class="btn-b">Conocer más</a>
+      </div>
+    </div>
+
+    <!-- Right -->
+    <div class="hero-right r d2">
+      <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=900&q=80" alt="Alumni Chile">
+      <div class="hero-overlay"></div>
+      <div class="hero-stat-cards">
+        <div class="hsc">
+          <div>
+            <div class="hsc-num">2,800<sup>+</sup></div>
+            <div class="hsc-label">Alumni en Chile</div>
+          </div>
+        </div>
+        <div class="hsc">
+          <div>
+            <div class="hsc-num">40<sup>+</sup></div>
+            <div class="hsc-label">Años de programas</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     STATS
+════════════════════════════════════════════════ -->
+<div class="stats">
+  <div class="wrap">
+    <div class="stats-row">
+      <div class="si r"><div class="si-n">18</div><div class="si-l">Programas activos</div></div>
+      <div class="si r d1"><div class="si-n">5</div><div class="si-l">Ciudades Bicentenario</div></div>
+      <div class="si r d2"><div class="si-n">200<sup>+</sup></div><div class="si-l">Participantes en eventos</div></div>
+      <div class="si r d3"><div class="si-n">1824</div><div class="si-l">Inicio relaciones diplomáticas</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     QUIÉNES SOMOS
+════════════════════════════════════════════════ -->
+<section class="sec" id="quienes">
+  <div class="wrap">
+    <div class="about-grid">
+      <div>
+        <span class="eyebrow r">Quiénes somos</span>
+        <h2 class="sec-title r d1">Una red de<br><em>liderazgo bilateral</em></h2>
+        <p class="about-lead r d2">
+          State Alumni Chile es la comunidad oficial de egresados de programas del Departamento de Estado de los Estados Unidos en Chile. Operamos en alianza con la Embajada de EE.UU. en Santiago, articulando experiencias internacionales con impacto local.
+        </p>
+        <div class="about-points r d3">
+          <div class="ap">
+            <div class="ap-title">Red Global</div>
+            <div class="ap-text">Conectados con alumni en más de 160 países</div>
+          </div>
+          <div class="ap">
+            <div class="ap-title">Diplomacia Pública</div>
+            <div class="ap-text">Fortalecemos los vínculos Chile–EE.UU.</div>
+          </div>
+          <div class="ap">
+            <div class="ap-title">Impacto Medible</div>
+            <div class="ap-text">Proyectos con resultados verificables</div>
+          </div>
+          <div class="ap">
+            <div class="ap-title">Desarrollo Continuo</div>
+            <div class="ap-text">Talleres, mentoría y oportunidades</div>
+          </div>
+        </div>
+        <div class="hero-btns r d4">
+          <a href="#directorio" class="btn-a">Ver directorio</a>
+          <a href="#eventos" class="btn-b">Nuestras actividades</a>
+        </div>
+      </div>
+      <div class="r d1 about-img-wrap">
+        <img
+          src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=700&q=80"
+          alt="Comunidad Alumni Chile"
+          class="about-img">
+        <div class="about-pull">
+          <q>El intercambio transforma perspectivas y crea líderes que ven el mundo diferente.</q>
+          <div class="about-pull-sig">Leslie Olave · Presidenta</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     PROGRAMAS
+════════════════════════════════════════════════ -->
+<section class="sec sec-alt" id="programas">
+  <div class="wrap">
+    <div class="prog-header">
+      <div>
+        <span class="eyebrow r">Programas de intercambio</span>
+        <h2 class="sec-title r d1">Experiencias que<br><em>abren el mundo</em></h2>
+      </div>
+      <a href="#" class="btn-b r d2" style="flex-shrink:0">Ver todos <i class="fas fa-arrow-right" style="margin-left:4px"></i></a>
+    </div>
+    <div class="prog-grid">
+
+      <div class="pc r">
+        <div class="pc-stripe"></div>
+        <div class="pc-badge">
+          <div class="pc-badge-abbr">F</div>
+          <div class="pc-badge-name">Fulbright<br>Program</div>
+        </div>
+        <h3 class="pc-title">Fulbright Program</h3>
+        <p class="pc-desc">Programa académico de excelencia que promueve estudios de posgrado, investigación y docencia en Estados Unidos. Orientado a fortalecer el capital humano avanzado y el intercambio académico entre Chile y EE.UU.</p>
+        <a href="#" class="pc-link">Más información <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="pc r d1">
+        <div class="pc-stripe"></div>
+        <div class="pc-badge">
+          <div class="pc-badge-abbr">IVLP</div>
+          <div class="pc-badge-name">International Visitor Leadership</div>
+        </div>
+        <h3 class="pc-title">International Visitor Leadership Program</h3>
+        <p class="pc-desc">Programa profesional de corto plazo dirigido a líderes emergentes y consolidados. Enfocado en gobernanza, innovación, sociedad civil, educación, medioambiente y políticas públicas. Combina visitas técnicas y networking de alto nivel.</p>
+        <a href="#" class="pc-link">Más información <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="pc r d2">
+        <div class="pc-stripe"></div>
+        <div class="pc-badge">
+          <div class="pc-badge-abbr">YLAI</div>
+          <div class="pc-badge-name">Young Leaders of the Americas</div>
+        </div>
+        <h3 class="pc-title">Young Leaders of the Americas Initiative</h3>
+        <p class="pc-desc">Programa de intercambio profesional dirigido a emprendedores y líderes del sector privado de América Latina y el Caribe. Fortalece liderazgo, emprendimiento e innovación a través de pasantías, mentorías y networking en EE.UU.</p>
+        <a href="#" class="pc-link">Más información <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="pc r d3">
+        <div class="pc-stripe"></div>
+        <div class="pc-badge">
+          <div class="pc-badge-abbr">SUSI</div>
+          <div class="pc-badge-name">Study of the U.S. Institutes</div>
+        </div>
+        <h3 class="pc-title">Study of the U.S. Institutes</h3>
+        <p class="pc-desc">Programa académico intensivo de corta duración dirigido a estudiantes y profesionales. Enfocado en liderazgo cívico, democracia, educación, periodismo y emprendimiento social.</p>
+        <a href="#" class="pc-link">Más información <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     EVENTOS
+════════════════════════════════════════════════ -->
+<section class="sec" id="eventos">
+  <div class="wrap">
+    <div class="prog-header">
+      <div>
+        <span class="eyebrow r">Actividades & Eventos</span>
+        <h2 class="sec-title r d1">Encuentros que<br><em>articulan Chile</em></h2>
+      </div>
+    </div>
+    <div class="ev-grid">
+
+      <!-- Bicentenario -->
+      <div class="ev r">
+        <div class="ev-left">
+          <div class="ev-year">23</div>
+          <div class="ev-when">Abr 2023<br>— Mar 2024</div>
+          <span class="ev-tag">Gira nacional</span>
+        </div>
+        <div class="ev-right">
+          <div class="ev-org">State Alumni Chile · Becarius for Impact</div>
+          <h3 class="ev-title">Gira Bicentenario: 200 Años de Relaciones Diplomáticas Chile–EE.UU.</h3>
+          <p class="ev-desc">Ciclo de encuentros nacionales en cinco ciudades en el marco de los 200 años de relaciones diplomáticas. Convocó a líderes del mundo público, privado, académico y social, abordando innovación, sostenibilidad, inclusión y descentralización.</p>
+          <div class="ev-tags">
+            <span class="ev-chip">Antofagasta</span>
+            <span class="ev-chip">Valparaíso</span>
+            <span class="ev-chip">Valdivia</span>
+            <span class="ev-chip">Punta Arenas</span>
+            <span class="ev-chip">Santiago</span>
+          </div>
+          <div class="ev-meta">
+            <span><i class="fas fa-users"></i>+200 participantes</span>
+            <span><i class="fas fa-handshake"></i>Apoyo: Embajada EE.UU.</span>
+            <span><i class="fas fa-map-marker-alt"></i>Chile</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mujeres -->
+      <div class="ev ev--red r">
+        <div class="ev-left">
+          <div class="ev-year">25</div>
+          <div class="ev-when">29 Abril<br>2025</div>
+          <span class="ev-tag ev-tag--r">Privado</span>
+        </div>
+        <div class="ev-right">
+          <div class="ev-org">State Alumni Chile · Fulbright Chile · Mujeres del Pacífico</div>
+          <h3 class="ev-title">Mujeres que nos Inspiran — Encuentro & Reconocimiento 2025</h3>
+          <p class="ev-desc">Encuentro privado que reunió a mujeres líderes egresadas de programas del Departamento de Estado, reconociendo 20 trayectorias destacadas en ciencia, cultura, educación, políticas públicas, comunicación y acción social.</p>
+          <div class="ev-tags">
+            <span class="ev-chip">Confitería Torres</span>
+            <span class="ev-chip">20 honoradas</span>
+          </div>
+          <div class="ev-meta">
+            <span><i class="fas fa-venus"></i>Liderazgo femenino</span>
+            <span><i class="fas fa-star"></i>Reconocimiento institucional</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- FBI -->
+      <div class="ev ev--gold r">
+        <div class="ev-left">
+          <div class="ev-year">25</div>
+          <div class="ev-when">26 Jun<br>2025</div>
+          <span class="ev-tag ev-tag--g">Alto nivel</span>
+        </div>
+        <div class="ev-right">
+          <div class="ev-org">State Alumni Chile · American Spaces Chile</div>
+          <h3 class="ev-title">El Rol del FBI y el Crimen Organizado en Chile</h3>
+          <p class="ev-desc">Encuentro de alto nivel en Ruinas de Huanchaca, Antofagasta. Reunió a autoridades políticas, fuerzas de orden y expertos internacionales para abordar los desafíos del crimen organizado con experiencia del FBI y Carabineros de Chile.</p>
+          <div class="ev-tags">
+            <span class="ev-chip">Antofagasta</span>
+            <span class="ev-chip">Formato privado</span>
+            <span class="ev-chip">En terreno</span>
+          </div>
+          <div class="ev-meta">
+            <span><i class="fas fa-users"></i>+100 asistentes</span>
+            <span><i class="fas fa-shield-alt"></i>FBI · Carabineros</span>
+            <span><i class="fas fa-handshake"></i>Multisectorial</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     DIRECTORIO
+════════════════════════════════════════════════ -->
+<section class="sec sec-dk" id="directorio">
+  <div class="wrap">
+    <div style="margin-bottom:clamp(36px,5vw,56px)">
+      <span class="eyebrow eyebrow-g r">Directorio 2025–2026</span>
+      <h2 class="sec-title sec-title-w r d1">El equipo que<br><em>lidera la red</em></h2>
+    </div>
+
+    <!-- PRESIDENTA — Destacada -->
+    <div class="dir-hero r">
+      <div class="dir-hero-photo">
+        <img
+          src="leslie.jpg"
+          alt="Leslie Olave Rojas"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="dir-hero-initials">LO</div>
+      </div>
+      <div class="dir-hero-body">
+        <div class="dir-hero-role">Presidenta</div>
+        <div class="dir-hero-name">Leslie Olave Rojas</div>
+        <p class="dir-hero-bio">
+          Emprendedora social y profesional en desarrollo de negocios y asuntos públicos. Fundadora de una plataforma de crowdfunding social, cuenta con experiencia internacional en Estados Unidos y Turquía. Actualmente se desempeña como Presidenta de State Alumni Chile, promoviendo el fortalecimiento de la red de egresados y la colaboración entre Chile y Estados Unidos.
+        </p>
+        <span class="dir-hero-prog">
+          <i class="fas fa-certificate"></i>
+          Alumni IVLP · U.S. Department of State
+        </span>
+      </div>
+    </div>
+
+    <!-- EQUIPO -->
+    <div class="dir-grid">
+
+      <!-- Rosa Madera -->
+      <div class="dc r">
+        <div class="dc-photo">
+          <img
+            src="rosa.jpg"
+            alt="Rosa Madera"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="dc-photo-init" style="display:none">RM</div>
+        </div>
+        <div class="dc-role">Vicepresidenta</div>
+        <div class="dc-name">Rosa Madera</div>
+        <p class="dc-bio">Fundadora y CEO de Empatthy, organización dedicada a promover la filantropía estratégica, la inversión de impacto y la colaboración entre actores del ecosistema social. Abogada con más de 20 años de experiencia en el ámbito del impacto y la filantropía, asesora a fundaciones, empresas y redes internacionales en estrategias de inversión social y criterios ESG.</p>
+      </div>
+
+      <!-- Marcela Ruiz -->
+      <div class="dc r d1">
+        <div class="dc-photo">
+          <img
+            src="marcela.jpg"
+            alt="Marcela Ruiz"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="dc-photo-init" style="display:none">MR</div>
+        </div>
+        <div class="dc-role">Vicepresidenta</div>
+        <div class="dc-name">Marcela Ruiz</div>
+        <p class="dc-bio">Bióloga marina y fundadora y CEO de Acústica Marina, empresa de base científica que desarrolla soluciones basadas en inteligencia artificial para monitorear y analizar los sonidos del océano, contribuyendo a la protección de los ecosistemas marinos. Reconocida internacionalmente por su trabajo en innovación tecnológica y sostenibilidad, y participa activamente en iniciativas que promueven la ciencia, la tecnología y el liderazgo femenino.</p>
+      </div>
+
+      <!-- Darian Figueroa -->
+      <div class="dc r d2">
+        <div class="dc-photo">
+          <img
+            src="darian.jpg"
+            alt="Darian Figueroa"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="dc-photo-init" style="display:none">DF</div>
+        </div>
+        <div class="dc-role">Secretario General</div>
+        <div class="dc-name">Darian Figueroa</div>
+        <p class="dc-bio">Psicóloga en la Pontificia Universidad Católica de Chile, se ha involucrado activamente en iniciativas internacionales de liderazgo y educación. Se desempeña como Outreach Coordinator y ha participado en programas como Youth Ambassadors, Harvard Aspire Leaders y el South American Business Forum, promoviendo el desarrollo y liderazgo juvenil.</p>
+      </div>
+
+      <!-- Sebastián Saavedra -->
+      <div class="dc r d3">
+        <div class="dc-photo">
+          <img
+            src="sebastian.jpg"
+            alt="Sebastián Saavedra"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="dc-photo-init" style="display:none">SS</div>
+        </div>
+        <div class="dc-role">Asesor</div>
+        <div class="dc-name">Sebastián Saavedra</div>
+        <p class="dc-bio">Fundador de Agencia Dry, agencia creativa enfocada en estrategia, comunicación y desarrollo de proyectos digitales. Impulsa iniciativas innovadoras que conectan creatividad, tecnología y colaboración, participando activamente en redes profesionales y de intercambio internacional.</p>
+      </div>
+
+      <!-- María José Collao -->
+      <div class="dc r d4">
+        <div class="dc-photo">
+          <img
+            src="mariajose.jpg"
+            alt="María José Collao"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="dc-photo-init" style="display:none">MJ</div>
+        </div>
+        <div class="dc-role">Asesora</div>
+        <div class="dc-name">María José Collao</div>
+        <p class="dc-bio">Especialista en cooperación internacional y desarrollo de capacidades. Activa participante en iniciativas de intercambio entre Chile y EE.UU. con foco en políticas públicas y diplomacia ciudadana.</p>
+      </div>
+
+      <!-- Embajada card -->
+      <div class="dc dc-embassy r d5">
+        <div class="dc-embassy-flags">🇺🇸🇨🇱</div>
+        <div class="dc-embassy-label">Apoyado por</div>
+        <div class="dc-embassy-name">Embajada de EE.UU.<br>en Chile</div>
+        <div style="font-size:10px;color:rgba(255,255,255,.2);letter-spacing:.1em;text-transform:uppercase;margin-top:4px">Exchange Alumni · ECA</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     GALERÍA BICENTENARIO
+════════════════════════════════════════════════ -->
+<section class="sec sec-alt" id="galeria">
+  <div class="wrap">
+    <span class="eyebrow r">Galería · Gira Bicentenario 2023–2024</span>
+    <h2 class="sec-title r d1">5 ciudades,<br><em>un solo Chile</em></h2>
+    <p class="gal-intro r d2">Ciclo de encuentros nacionales en el marco de los 200 años de relaciones diplomáticas Chile–EE.UU. Cinco jornadas que reunieron a líderes del mundo público, privado, académico y social a lo largo del país.</p>
+
+    <!-- Impact -->
+    <div class="gal-impact r d3">
+      <div class="gal-imp"><div class="gal-imp-n">5</div><div class="gal-imp-l">Ciudades</div></div>
+      <div class="gal-imp"><div class="gal-imp-n">200<sup>+</sup></div><div class="gal-imp-l">Participantes</div></div>
+      <div class="gal-imp"><div class="gal-imp-n">7</div><div class="gal-imp-l">Instituciones</div></div>
+      <div class="gal-imp"><div class="gal-imp-n">2</div><div class="gal-imp-l">Organizaciones</div></div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="gal-tabs r">
+      <button class="gal-tab on" onclick="galSwitch('antofagasta',this)">Antofagasta</button>
+      <button class="gal-tab" onclick="galSwitch('valparaiso',this)">Valparaíso</button>
+      <button class="gal-tab" onclick="galSwitch('valdivia',this)">Valdivia</button>
+      <button class="gal-tab" onclick="galSwitch('punta-arenas',this)">Punta Arenas</button>
+      <button class="gal-tab" onclick="galSwitch('santiago',this)">Santiago</button>
+      <button class="gal-tab gal-tab--sp" onclick="galSwitch('fbi',this)">🛡️ Encuentro FBI</button>
+    </div>
+
+    <!-- ── ANTOFAGASTA ── -->
+    <div class="gal-panel on" id="gal-antofagasta">
+      <div class="gal-hero">
+        <img src="eventos/antofagasta/image2.png" alt="Antofagasta 2023">
+        <div class="gal-hero-ov">
+          <div class="gal-hdate">27 Abril 2023</div>
+          <div class="gal-hcity">Antofagasta</div>
+          <div class="gal-hplace">Universidad Católica del Norte · Ruinas de Huanchaca</div>
+          <span class="gal-hbadge"><i class="fas fa-circle"></i> Inmigración e Inclusión</span>
+        </div>
+      </div>
+      <div class="gal-sub">Evento Principal · Seminario UCN</div>
+      <div class="gal-grid">
+        <div class="gal-item"><img src="eventos/antofagasta/image1.png" alt=""><div class="gal-cap"><span>Participación del público</span></div></div>
+        <div class="gal-item"><img src="eventos/antofagasta/image3.png" alt=""><div class="gal-cap"><span>Paneles sobre diversidad e inclusión</span></div></div>
+        <div class="gal-item"><img src="eventos/antofagasta/image4.png" alt=""><div class="gal-cap"><span>Speakers y expertos</span></div></div>
+        <div class="gal-item"><img src="eventos/antofagasta/image5.png" alt=""><div class="gal-cap"><span>Focus groups con participantes</span></div></div>
+        <div class="gal-item"><img src="eventos/antofagasta/image6.png" alt=""><div class="gal-cap"><span>Espacio de diálogo abierto</span></div></div>
+        <div class="gal-item"><img src="eventos/antofagasta/image7.png" alt=""><div class="gal-cap"><span>Networking entre alumni</span></div></div>
+        <div class="gal-item"><img src="eventos/antofagasta/image8.png" alt=""><div class="gal-cap"><span>Comunidades indígenas y sociedad civil</span></div></div>
+      </div>
+      <div class="gal-sub gal-sub--side">Side Event · Taller de Innovación Social — Migración</div>
+      <div class="gal-grid gal-grid--3">
+        <div class="gal-item"><img src="eventos/antofagasta/image9.png" alt=""><div class="gal-cap"><span>Actividad práctica colaborativa</span></div></div>
+        <div class="gal-item"><img src="eventos/antofagasta/image10.png" alt=""><div class="gal-cap"><span>Taller de innovación social</span></div></div>
+        <div class="gal-item"><img src="eventos/antofagasta/image11.png" alt=""><div class="gal-cap"><span>Experiencia inmersiva</span></div></div>
+        <div class="gal-item"><img src="eventos/antofagasta/image12.png" alt=""><div class="gal-cap"><span>Cierre del taller</span></div></div>
+      </div>
+    </div>
+
+    <!-- ── VALPARAÍSO ── -->
+    <div class="gal-panel" id="gal-valparaiso">
+      <div class="gal-hero">
+        <img src="eventos/valparaiso/image1.png" alt="Valparaíso 2023">
+        <div class="gal-hero-ov">
+          <div class="gal-hdate">26 Mayo 2023</div>
+          <div class="gal-hcity">Valparaíso</div>
+          <div class="gal-hplace">Instituto Chileno Norteamericano · Museo Baburizza</div>
+          <span class="gal-hbadge"><i class="fas fa-circle"></i> Emprendimiento, Ciencia y Educación</span>
+        </div>
+      </div>
+      <div class="gal-sub">Evento Principal · Instituto Chileno Norteamericano</div>
+      <div class="gal-grid">
+        <div class="gal-item"><img src="eventos/valparaiso/image2.png" alt=""><div class="gal-cap"><span>Paneles sobre innovación regional</span></div></div>
+        <div class="gal-item"><img src="eventos/valparaiso/image3.png" alt=""><div class="gal-cap"><span>Líderes del ecosistema emprendedor</span></div></div>
+        <div class="gal-item"><img src="eventos/valparaiso/image4.png" alt=""><div class="gal-cap"><span>Focus groups con expertos</span></div></div>
+        <div class="gal-item"><img src="eventos/valparaiso/image5.png" alt=""><div class="gal-cap"><span>Networking en Museo Baburizza</span></div></div>
+      </div>
+      <div class="gal-sub gal-sub--side">Side Event · Elevate Your Pitch</div>
+      <div class="gal-grid gal-grid--3">
+        <div class="gal-item"><img src="eventos/valparaiso/image6.png" alt=""><div class="gal-cap"><span>Taller intensivo de pitch en inglés</span></div></div>
+        <div class="gal-item"><img src="eventos/valparaiso/image7.png" alt=""><div class="gal-cap"><span>Presentaciones de emprendedores</span></div></div>
+        <div class="gal-item"><img src="eventos/valparaiso/image8.png" alt=""><div class="gal-cap"><span>Retroalimentación y networking</span></div></div>
+      </div>
+    </div>
+
+    <!-- ── VALDIVIA ── -->
+    <div class="gal-panel" id="gal-valdivia">
+      <div class="gal-hero">
+        <img src="eventos/valdivia/image1.png" alt="Valdivia 2023">
+        <div class="gal-hero-ov">
+          <div class="gal-hdate">11 Agosto 2023</div>
+          <div class="gal-hcity">Valdivia</div>
+          <div class="gal-hplace">Universidad Austral de Chile · Espacio Fluvial</div>
+          <span class="gal-hbadge"><i class="fas fa-circle"></i> Democracia, Sostenibilidad y Territorio</span>
+        </div>
+      </div>
+      <div class="gal-sub">Evento Principal · Universidad Austral de Chile</div>
+      <div class="gal-grid">
+        <div class="gal-item"><img src="eventos/valdivia/image2.png" alt=""><div class="gal-cap"><span>Panel de sostenibilidad territorial</span></div></div>
+        <div class="gal-item"><img src="eventos/valdivia/image3.png" alt=""><div class="gal-cap"><span>Descentralización y gobernanza</span></div></div>
+        <div class="gal-item"><img src="eventos/valdivia/image4.png" alt=""><div class="gal-cap"><span>Autoridades locales y academia</span></div></div>
+        <div class="gal-item"><img src="eventos/valdivia/image5.png" alt=""><div class="gal-cap"><span>Taller: Comunicación para el liderazgo</span></div></div>
+        <div class="gal-item"><img src="eventos/valdivia/image6.png" alt=""><div class="gal-cap"><span>Networking en espacio fluvial</span></div></div>
+        <div class="gal-item"><img src="eventos/valdivia/image7.png" alt=""><div class="gal-cap"><span>Cierre del encuentro regional</span></div></div>
+      </div>
+    </div>
+
+    <!-- ── PUNTA ARENAS ── -->
+    <div class="gal-panel" id="gal-punta-arenas">
+      <div class="gal-hero">
+        <img src="eventos/punta-arenas/image1.png" alt="Punta Arenas 2023">
+        <div class="gal-hero-ov">
+          <div class="gal-hdate">10 Noviembre 2023</div>
+          <div class="gal-hcity">Punta Arenas</div>
+          <div class="gal-hplace">Universidad de Magallanes · American Corner</div>
+          <span class="gal-hbadge"><i class="fas fa-circle"></i> Acción Climática</span>
+        </div>
+      </div>
+      <div class="gal-sub">Evento Principal · Universidad de Magallanes</div>
+      <div class="gal-grid">
+        <div class="gal-item"><img src="eventos/punta-arenas/image2.png" alt=""><div class="gal-cap"><span>Conferencia sobre cambio climático antártico</span></div></div>
+        <div class="gal-item"><img src="eventos/punta-arenas/image3.png" alt=""><div class="gal-cap"><span>Perspectiva desde el territorio extremo</span></div></div>
+        <div class="gal-item"><img src="eventos/punta-arenas/image4.png" alt=""><div class="gal-cap"><span>Workshop de divulgación científica</span></div></div>
+        <div class="gal-item"><img src="eventos/punta-arenas/image5.png" alt=""><div class="gal-cap"><span>Sostenibilidad global y ciencia</span></div></div>
+        <div class="gal-item"><img src="eventos/punta-arenas/image6.png" alt=""><div class="gal-cap"><span>Networking austral</span></div></div>
+        <div class="gal-item"><img src="eventos/punta-arenas/image7.png" alt=""><div class="gal-cap"><span>Alumni en territorio patagónico</span></div></div>
+        <div class="gal-item"><img src="eventos/punta-arenas/image8.png" alt=""><div class="gal-cap"><span>Espacio de diálogo científico</span></div></div>
+        <div class="gal-item"><img src="eventos/punta-arenas/image9.png" alt=""><div class="gal-cap"><span>Cierre del encuentro austral</span></div></div>
+      </div>
+    </div>
+
+    <!-- ── SANTIAGO ── -->
+    <div class="gal-panel" id="gal-santiago">
+      <div class="gal-hero">
+        <img src="eventos/santiago/image1.png" alt="Santiago 2024">
+        <div class="gal-hero-ov">
+          <div class="gal-hdate">13 Marzo 2024 · Evento de cierre</div>
+          <div class="gal-hcity">Santiago</div>
+          <div class="gal-hplace">Instituto Chileno Norteamericano · American Spaces</div>
+          <span class="gal-hbadge"><i class="fas fa-circle"></i> Innovación y Futuro — Cierre Bicentenario</span>
+        </div>
+      </div>
+      <div class="gal-sub">Cierre de la Gira Nacional · Instituto Chileno Norteamericano</div>
+      <div class="gal-grid">
+        <div class="gal-item"><img src="eventos/santiago/image2.png" alt=""><div class="gal-cap"><span>Comunidad alumni reunida</span></div></div>
+        <div class="gal-item"><img src="eventos/santiago/image3.png" alt=""><div class="gal-cap"><span>Consolidación de aprendizajes</span></div></div>
+        <div class="gal-item"><img src="eventos/santiago/image4.png" alt=""><div class="gal-cap"><span>Visión país y proyección futura</span></div></div>
+        <div class="gal-item"><img src="eventos/santiago/image5.png" alt=""><div class="gal-cap"><span>Expertos y actores clave</span></div></div>
+        <div class="gal-item"><img src="eventos/santiago/image6.png" alt=""><div class="gal-cap"><span>Articulación entre alumni</span></div></div>
+        <div class="gal-item"><img src="eventos/santiago/image7.png" alt=""><div class="gal-cap"><span>Networking de cierre</span></div></div>
+        <div class="gal-item"><img src="eventos/santiago/image8.png" alt=""><div class="gal-cap"><span>Red alumni fortalecida</span></div></div>
+        <div class="gal-item"><img src="eventos/santiago/image9.png" alt=""><div class="gal-cap"><span>Innovación y futuro</span></div></div>
+        <div class="gal-item"><img src="eventos/santiago/image10.png" alt=""><div class="gal-cap"><span>Diálogo intergeneracional</span></div></div>
+        <div class="gal-item"><img src="eventos/santiago/image11.png" alt=""><div class="gal-cap"><span>Cierre del ciclo bicentenario</span></div></div>
+      </div>
+    </div>
+
+    <!-- ── FBI ── -->
+    <div class="gal-panel" id="gal-fbi">
+      <div class="gal-hero" style="background:var(--ink)">
+        <img src="eventos/fbi/image1.png" alt="Encuentro FBI 2025">
+        <div class="gal-hero-ov" style="background:linear-gradient(to right,rgba(8,14,28,.9) 0%,transparent 60%)">
+          <div class="gal-hdate">26 Junio 2025 · Encuentro de alto nivel</div>
+          <div class="gal-hcity">Antofagasta</div>
+          <div class="gal-hplace">Ruinas de Huanchaca · Formato privado</div>
+          <span class="gal-hbadge"><i class="fas fa-shield-alt"></i> El Rol del FBI y el Crimen Organizado en Chile</span>
+        </div>
+      </div>
+      <div class="gal-sub">Encuentro Internacional · Ruinas de Huanchaca</div>
+      <div class="gal-grid gal-grid--3">
+        <div class="gal-item"><img src="eventos/fbi/image2.png" alt=""><div class="gal-cap"><span>Encuentro multisectorial de alto nivel</span></div></div>
+        <div class="gal-item"><img src="eventos/fbi/image3.png" alt=""><div class="gal-cap"><span>Sesión especializada en seguridad</span></div></div>
+        <div class="gal-item"><img src="eventos/fbi/image4.png" alt=""><div class="gal-cap"><span>FBI, autoridades y sector privado</span></div></div>
+      </div>
+      <div class="gal-sub gal-sub--side">Side Event · Experiencia en Terreno con Carabineros — La Negra</div>
+      <div class="gal-grid gal-grid--3" style="grid-template-columns:repeat(1,1fr);max-width:420px">
+        <div class="gal-item" style="aspect-ratio:16/9"><img src="eventos/fbi/image1.png" alt=""><div class="gal-cap"><span>Visita operativa · Brigada canina y drones</span></div></div>
+      </div>
+    </div>
+
+    <!-- Organizers -->
+    <div class="gal-orgs r">
+      <div>
+        <div class="gal-org-title"><i class="fas fa-handshake"></i> Organizan</div>
+        <div class="gal-org-list">
+          <span class="gal-org-item">State Alumni Chile</span>
+          <span class="gal-org-item">Becarius for Impact</span>
+        </div>
+      </div>
+      <div>
+        <div class="gal-org-title"><i class="fas fa-globe-americas"></i> Apoyan</div>
+        <div class="gal-org-list">
+          <span class="gal-org-item">Embajada de Estados Unidos en Chile</span>
+          <span class="gal-org-item">Fulbright</span>
+          <span class="gal-org-item">IVLP · Departamento de Estado</span>
+          <span class="gal-org-item">SUSI</span>
+        </div>
+      </div>
+      <div>
+        <div class="gal-org-title"><i class="fas fa-users"></i> Colaboran</div>
+        <div class="gal-org-list">
+          <span class="gal-org-item">American Spaces</span>
+          <span class="gal-org-item">Institutos Chileno Norteamericanos</span>
+          <span class="gal-org-item">Universidades regionales</span>
+          <span class="gal-org-item">Organizaciones locales</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     SUMMIT BANNER
+════════════════════════════════════════════════ -->
+<div class="summit-bn">
+  <div class="wrap">
+    <div>
+      <div class="sb-eyebrow r">Próximo evento · Postulación abierta</div>
+      <h2 class="sb-title r d1">AI Regional Acceleration<br>Summit 2026</h2>
+      <div class="sb-date r d2">
+        <span><i class="fas fa-calendar"></i>28 de mayo de 2026</span>
+        <span><i class="fas fa-map-marker-alt"></i>Distrito V21 · Viña del Mar</span>
+      </div>
+      <div class="sb-logos r d3">
+        <span class="sb-pill">NVIDIA</span>
+        <span class="sb-pill">Google</span>
+        <span class="sb-pill">CENIA</span>
+        <span class="sb-pill">UAI</span>
+        <span class="sb-pill">Embajada EE.UU.</span>
+      </div>
+    </div>
+    <div class="sb-cta r d2">
+      <a href="summit.html" class="btn-summit">
+        Ver Summit 2026 <i class="fas fa-arrow-right"></i>
+      </a>
+      <span class="sb-sub">Cupos limitados · Selección de participantes</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════ -->
+<footer class="footer" id="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+
+      <!-- Brand -->
+      <div>
+        <div class="fb-logo" id="fbLogo">
+          <img
+            src="logo.png"
+            alt="State Alumni Chile"
+            onerror="this.style.display='none';document.getElementById('fbFallback').style.display='flex'">
+          <div id="fbFallback" class="fb-logo-fallback">
+            <div class="fb-logo-icon"><i class="fas fa-star"></i></div>
+            <div>
+              <div class="fb-name">State Alumni Chile</div>
+              <div class="fb-sub">U.S. Embassy Program</div>
+            </div>
+          </div>
+          <div id="fbText" style="display:none">
+            <div class="fb-name">State Alumni Chile</div>
+            <div class="fb-sub">Connect · Empower · Inspire</div>
+          </div>
+        </div>
+        <p class="fb-desc">Red oficial de egresados de programas del Departamento de Estado de EE.UU. en Chile. Fortaleciendo lazos y construyendo liderazgo desde 1984.</p>
+        <div class="fb-social">
+          <a href="#" class="fsb" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="fsb" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="fsb" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="fsb" title="Twitter/X"><i class="fab fa-x-twitter"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <div class="fc-title">Navegación</div>
+        <div class="fc-links">
+          <a href="#quienes" class="fc-link">Quiénes somos</a>
+          <a href="#directorio" class="fc-link">Directorio</a>
+          <a href="#programas" class="fc-link">Programas</a>
+          <a href="#eventos" class="fc-link">Eventos</a>
+          <a href="summit.html" class="fc-link">Summit 2026</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="fc-title">Programas</div>
+        <div class="fc-links">
+          <a href="#programas" class="fc-link">Fulbright</a>
+          <a href="#programas" class="fc-link">IVLP</a>
+          <a href="#programas" class="fc-link">YLAI</a>
+          <a href="#programas" class="fc-link">SUSI</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="fc-title">Contacto</div>
+        <div class="fc-links">
+          <a href="mailto:alumni@cl.usembassy.gov" class="fc-link">alumni@cl.usembassy.gov</a>
+          <a href="#" class="fc-link">Santiago, Chile</a>
+          <a href="https://cl.usembassy.gov" target="_blank" class="fc-link">cl.usembassy.gov</a>
+          <a href="https://alumni.state.gov" target="_blank" class="fc-link">alumni.state.gov</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="footer-btm">
+      <div class="footer-legal">
+        U.S. Department of State
+        <span>|</span><a href="#">Privacidad</a>
+        <span>|</span><a href="#">FOIA</a>
+        <span>|</span><a href="#">Términos</a>
+        <span>|</span>© 2026 State Alumni Chile
+      </div>
+      <div class="footer-flags">🇺🇸<span class="footer-flags-sep">×</span>🇨🇱</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ════════════════════════════════════════════════
+     MOBILE MENU
+════════════════════════════════════════════════ -->
+<div class="mob" id="mob">
+  <button class="mob-close" onclick="closeMenu()"><i class="fas fa-times"></i></button>
+  <div class="mob-brand">State Alumni Chile</div>
+  <nav class="mob-nav">
+    <a href="#quienes" onclick="closeMenu()">Quiénes somos</a>
+    <a href="#directorio" onclick="closeMenu()">Directorio</a>
+    <a href="#programas" onclick="closeMenu()">Programas</a>
+    <a href="#galeria" onclick="closeMenu()">Galería</a>
+    <a href="#eventos" onclick="closeMenu()">Noticias</a>
+    <a href="#footer" onclick="closeMenu()">Contacto</a>
+    <a href="summit.html" class="mob-summit">⚡ Summit 2026</a>
+  </nav>
+</div>
+
+<!-- Scroll top -->
+<button class="stb" id="stb" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script>
+// Reveal
+const obs = new IntersectionObserver(e => {
+  e.forEach(i => { if(i.isIntersecting){i.target.classList.add('on');obs.unobserve(i.target)} });
+}, {threshold:.1, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.r').forEach(el => obs.observe(el));
+
+// Scroll top
+window.addEventListener('scroll', () => {
+  document.getElementById('stb').classList.toggle('on', scrollY > 500);
+}, {passive:true});
+
+// Logo fallback handler - show text if image fails
+document.getElementById('logoImg').addEventListener('load', function(){
+  document.getElementById('fbText').style.display = 'none';
+});
+
+// Menu
+function openMenu(){ document.getElementById('mob').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeMenu(){ document.getElementById('mob').classList.remove('open'); document.body.style.overflow=''; }
+
+// Gallery tabs
+function galSwitch(city, btn) {
+  document.querySelectorAll('.gal-panel').forEach(p => p.classList.remove('on'));
+  document.querySelectorAll('.gal-tab').forEach(t => t.classList.remove('on'));
+  document.getElementById('gal-' + city).classList.add('on');
+  btn.classList.add('on');
+}
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth',block:'start'}); }
+  });
+});
+</script>
+</body>
+</html>
