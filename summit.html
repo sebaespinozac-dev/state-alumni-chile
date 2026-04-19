@@ -9,196 +9,185 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-/* ── RESET & TOKENS ────────────────────────────────────────── */
-:root {
-  --navy:    #003087;
-  --navy-dk: #001554;
-  --navy-md: #1a4a8c;
-  --navy-lt: #e8eef8;
-  --white:   #ffffff;
-  --surface: #f7f9fc;
-  --ink:     #0f1e3c;
-  --ink-2:   #3d4f6b;
-  --ink-3:   #7a8ba6;
-  --rule:    #dde3ee;
-  --gold:    #c9a84c;
-  --red:     #bf0a30;
-  --ease:    cubic-bezier(0.16,1,0.3,1);
-  --fu:      'Inter', system-ui, sans-serif;
+:root{
+  --n:#002868;--nd:#001540;--nm:#1a3f78;--nl:#e8eef8;
+  --w:#fff;--s:#f5f7fb;--s2:#edf0f7;
+  --k:#0f1e3c;--k2:#3d4f6b;--k3:#7a8ba6;
+  --r:#dde3ee;--g:#c9a84c;--red:#bf0a30;
+  --f:'Inter',system-ui,sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:var(--fu);background:var(--white);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{font-family:var(--f);background:var(--w);color:var(--k);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 ul{list-style:none}
-.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+.wrap{max-width:1160px;margin:0 auto;padding:0 clamp(18px,4vw,44px)}
 
-/* ── NAVBAR ──────────────────────────────────────────────── */
-.nav{
-  position:sticky;top:0;z-index:300;
-  background:rgba(255,255,255,.96);
-  border-bottom:1px solid var(--rule);
-  backdrop-filter:blur(12px);
-  height:54px;transition:box-shadow .3s;
-}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:100%}
-.nav-back{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--ink-3);transition:color .2s}
-.nav-back:hover{color:var(--navy)}
-.nav-logo{font-size:13px;font-weight:700;color:var(--navy);display:flex;align-items:center;gap:8px}
-.nav-logo span{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
-.nav-cta{padding:8px 18px;background:var(--navy);color:var(--white);font-size:12px;font-weight:700;letter-spacing:.04em;transition:background .2s}
-.nav-cta:hover{background:var(--navy-md)}
+/* ── NAV ── */
+.nav{position:sticky;top:0;z-index:300;background:rgba(255,255,255,.97);border-bottom:1px solid var(--r);height:52px;backdrop-filter:blur(10px)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:100%;gap:16px}
+.nav-back{display:flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;color:var(--k3);transition:color .2s;white-space:nowrap}
+.nav-back:hover{color:var(--n)}
+.nav-brand{display:flex;align-items:center;gap:10px}
+.nav-logo-img{height:32px;width:auto;display:block}
+.nav-logo-txt{font-size:12px;font-weight:700;color:var(--n);white-space:nowrap}
+.nav-logo-sub{font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--k3);display:block;margin-top:1px}
+.nav-cta{padding:8px 16px;background:var(--n);color:var(--w);font-size:11.5px;font-weight:700;letter-spacing:.04em;white-space:nowrap;transition:background .2s}
+.nav-cta:hover{background:var(--nm)}
 
-/* ── HERO ─────────────────────────────────────────────────── */
-.hero{position:relative;min-height:74vh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
-.hero-bg{
-  position:absolute;inset:0;
-  background:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1800&q=80') center/cover no-repeat;
-}
-.hero-ov{
-  position:absolute;inset:0;
-  background:linear-gradient(105deg,rgba(0,21,84,.95) 0%,rgba(0,48,135,.85) 38%,rgba(0,48,135,.6) 68%,rgba(0,21,84,.55) 100%);
-}
-.hero-body{position:relative;z-index:2;padding:clamp(40px,8vw,80px) 0 clamp(48px,6vw,72px)}
-.hero-flags{display:flex;align-items:center;gap:10px;margin-bottom:22px}
-.hfe{font-size:22px;line-height:1}
-.hfs{width:1px;height:16px;background:rgba(255,255,255,.28)}
-.hfl{font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.5)}
-.hero-title{font-size:clamp(30px,4.8vw,60px);font-weight:900;line-height:1.06;letter-spacing:-.03em;color:#fff;margin-bottom:14px;max-width:780px}
-.hero-tagline{font-size:clamp(13px,1.3vw,15.5px);font-weight:500;color:rgba(255,255,255,.65);letter-spacing:.02em;margin-bottom:8px}
-.hero-tagline strong{color:rgba(255,255,255,.9);font-weight:700}
-.hero-desc{font-size:14px;line-height:1.75;color:rgba(255,255,255,.55);max-width:560px;margin-bottom:22px}
-.hero-meta{display:flex;flex-wrap:wrap;gap:20px;margin-bottom:28px;font-size:13px;font-weight:500;color:rgba(255,255,255,.7)}
-.hero-meta i{margin-right:5px;font-size:11px;color:rgba(255,255,255,.45)}
-.hero-btns{display:flex;gap:10px;flex-wrap:wrap}
-.btn-w{display:inline-flex;align-items:center;gap:8px;padding:12px 26px;background:var(--white);color:var(--navy);font-size:13px;font-weight:800;letter-spacing:.03em;transition:background .2s,transform .15s}
-.btn-w:hover{background:var(--navy-lt);transform:translateY(-1px)}
-.btn-ol{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border:1.5px solid rgba(255,255,255,.32);color:#fff;font-size:13px;font-weight:600;transition:border-color .2s,background .2s}
-.btn-ol:hover{border-color:rgba(255,255,255,.65);background:rgba(255,255,255,.06)}
-.hero-note{margin-top:14px;font-size:11px;color:rgba(255,255,255,.38);font-weight:500}
+/* ── HERO ── */
+.hero{position:relative;min-height:70vh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('eventos/valdivia/image1.png') center/cover no-repeat}
+.hero-ov{position:absolute;inset:0;background:linear-gradient(110deg,rgba(0,21,64,.96) 0%,rgba(0,40,104,.88) 40%,rgba(0,40,104,.65) 72%,rgba(0,21,64,.6) 100%)}
+.hero-body{position:relative;z-index:2;padding:clamp(36px,7vw,72px) 0 clamp(44px,6vw,64px)}
+.h-flags{display:flex;align-items:center;gap:9px;margin-bottom:18px}
+.h-fe{font-size:21px;line-height:1}
+.h-fs{width:1px;height:15px;background:rgba(255,255,255,.25)}
+.h-fl{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.48)}
+.h-title{font-size:clamp(28px,4.6vw,58px);font-weight:900;line-height:1.06;letter-spacing:-.03em;color:#fff;margin-bottom:10px;max-width:740px}
+.h-tag{font-size:clamp(12.5px,1.2vw,15px);font-weight:600;color:rgba(255,255,255,.65);margin-bottom:8px;letter-spacing:.01em}
+.h-tag strong{color:rgba(255,255,255,.9)}
+.h-desc{font-size:13.5px;line-height:1.75;color:rgba(255,255,255,.52);max-width:520px;margin-bottom:20px}
+.h-meta{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:24px;font-size:12.5px;font-weight:500;color:rgba(255,255,255,.68)}
+.h-meta i{margin-right:4px;font-size:10.5px;color:rgba(255,255,255,.42)}
+.h-btns{display:flex;gap:9px;flex-wrap:wrap}
+.btn-w{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;background:var(--w);color:var(--n);font-size:12.5px;font-weight:800;letter-spacing:.03em;transition:background .2s,transform .15s}
+.btn-w:hover{background:var(--nl);transform:translateY(-1px)}
+.btn-ol{display:inline-flex;align-items:center;gap:7px;padding:11px 20px;border:1.5px solid rgba(255,255,255,.3);color:#fff;font-size:12.5px;font-weight:600;transition:border-color .2s,background .2s}
+.btn-ol:hover{border-color:rgba(255,255,255,.65);background:rgba(255,255,255,.07)}
+.h-note{margin-top:12px;font-size:11px;color:rgba(255,255,255,.35);font-weight:500}
 
-/* ── INFO STRIP ──────────────────────────────────────────── */
-.strip{background:var(--navy);padding:13px 0}
-.strip .wrap{display:flex;align-items:center;flex-wrap:wrap;gap:clamp(16px,4vw,48px)}
-.strip-item{font-size:11px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:7px}
-.strip-item i{color:rgba(255,255,255,.3);font-size:10px}
+/* ── STRIP ── */
+.strip{background:var(--n);padding:11px 0}
+.strip .wrap{display:flex;flex-wrap:wrap;gap:clamp(12px,3.5vw,40px);align-items:center}
+.strip-it{font-size:10.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:rgba(255,255,255,.48);display:flex;align-items:center;gap:6px}
+.strip-it i{font-size:9.5px;color:rgba(255,255,255,.28)}
 
-/* ── MAIN TWO-COLUMN ─────────────────────────────────────── */
-.main-sec{background:var(--white);padding:clamp(48px,7vw,80px) 0}
-.main-grid{display:grid;grid-template-columns:54% 46%;gap:clamp(32px,5vw,64px)}
+/* ── MAIN 2-COL ── */
+.main{background:var(--w);padding:clamp(40px,6vw,68px) 0}
+.main-grid{display:grid;grid-template-columns:52% 48%;gap:clamp(28px,5vw,60px)}
 
-.sec-lbl{font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--navy);display:flex;align-items:center;gap:9px;margin-bottom:10px}
-.sec-lbl::before{content:'';width:18px;height:2px;background:var(--navy)}
-.sec-h2{font-size:clamp(17px,2vw,23px);font-weight:800;color:var(--ink);line-height:1.25;letter-spacing:-.02em;margin-bottom:18px}
+.lbl{font-size:9.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--n);display:flex;align-items:center;gap:8px;margin-bottom:9px}
+.lbl::before{content:'';width:16px;height:2px;background:var(--n)}
+.h2{font-size:clamp(16px,1.9vw,21px);font-weight:800;color:var(--k);line-height:1.26;letter-spacing:-.02em;margin-bottom:16px}
+.body-t{font-size:13.5px;line-height:1.78;color:var(--k2);margin-bottom:18px}
+.body-t strong{color:var(--k);font-weight:700}
 
-/* Bullets */
-.blist{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
-.bi{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;line-height:1.55;color:var(--ink-2)}
-.bi strong{color:var(--ink);font-weight:700}
-.bi-ico{width:22px;height:22px;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center}
-.bi-ico i{font-size:11px;color:var(--navy)}
+.bl{display:flex;flex-direction:column;gap:9px;margin-bottom:24px}
+.bi{display:flex;align-items:flex-start;gap:9px;font-size:13px;line-height:1.55;color:var(--k2)}
+.bi strong{color:var(--k);font-weight:700}
+.bi-i{width:20px;height:20px;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center}
+.bi-i i{font-size:10.5px;color:var(--n)}
 
-/* Divider */
-.div-rule{height:1px;background:var(--rule);margin:24px 0}
+.hr{height:1px;background:var(--r);margin:20px 0}
 
 /* Moderator */
-.mod-lbl{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:14px}
-.mod-card{display:flex;align-items:center;gap:14px}
-.mod-av{
-  width:58px;height:58px;border-radius:50%;flex-shrink:0;
-  background:var(--navy-lt);border:2.5px solid var(--navy);
-  display:flex;align-items:center;justify-content:center;
-  font-size:18px;font-weight:900;color:var(--navy);overflow:hidden;
-}
-.mod-av img{width:100%;height:100%;object-fit:cover;object-position:top}
-.mod-name{font-size:15px;font-weight:800;color:var(--ink);margin-bottom:4px}
-.mod-role{font-size:12px;color:var(--ink-3);line-height:1.55}
+.mod-l{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--k3);margin-bottom:12px}
+.mod{display:flex;align-items:center;gap:12px}
+.mod-ph{width:54px;height:54px;border-radius:50%;overflow:hidden;flex-shrink:0;border:2.5px solid var(--n);background:var(--nl)}
+.mod-ph img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.mod-name{font-size:14.5px;font-weight:800;color:var(--k);margin-bottom:3px}
+.mod-role{font-size:11.5px;color:var(--k3);line-height:1.55}
 
 /* Speakers grid */
-.spk-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
-.spk{background:var(--surface);border:1px solid var(--rule);padding:18px 14px;display:flex;flex-direction:column;align-items:center;text-align:center;transition:border-color .2s,box-shadow .2s}
-.spk:hover{border-color:var(--navy);box-shadow:0 4px 20px rgba(0,48,135,.09)}
-.spk-av{width:64px;height:64px;border-radius:50%;background:var(--navy-lt);margin-bottom:12px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;color:var(--navy);border:1.5px solid rgba(0,48,135,.15);overflow:hidden}
-.spk-av img{width:100%;height:100%;object-fit:cover;object-position:top}
-.spk-name{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px;line-height:1.25}
-.spk-tag{padding:3px 10px;background:var(--navy-lt);font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--navy)}
+.spk-g{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+.spk{background:var(--s);border:1px solid var(--r);padding:16px 12px;display:flex;flex-direction:column;align-items:center;text-align:center;transition:border-color .2s,box-shadow .2s}
+.spk:hover{border-color:var(--n);box-shadow:0 3px 16px rgba(0,40,104,.09)}
+.spk-ph{width:62px;height:62px;border-radius:50%;overflow:hidden;margin-bottom:10px;border:1.5px solid rgba(0,40,104,.14);background:var(--nl);flex-shrink:0}
+.spk-ph img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.spk-name{font-size:13px;font-weight:700;color:var(--k);margin-bottom:5px;line-height:1.2}
+.spk-org{padding:3px 9px;background:var(--nl);font-size:9.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--n)}
 
-/* ── FORMAT 3-COL ────────────────────────────────────────── */
-.fmt-strip{background:var(--surface);padding:clamp(40px,6vw,60px) 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
-.fmt-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
-.fmt-col{background:var(--white);padding:clamp(24px,3.5vw,36px);border:1px solid var(--rule)}
-.fmt-head{display:flex;align-items:center;gap:10px;margin-bottom:14px}
-.fmt-icon{width:36px;height:36px;background:var(--navy);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:14px}
-.fmt-title{font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.25}
-.fmt-sub{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:14px}
-.fmt-list{display:flex;flex-direction:column;gap:7px}
-.fmt-li{font-size:12.5px;color:var(--ink-2);line-height:1.5;display:flex;align-items:baseline;gap:7px}
-.fmt-li::before{content:'·';color:var(--navy);font-weight:900;flex-shrink:0}
+/* ── COMPACT BLOCKS ── */
+.blocks{background:var(--s);padding:clamp(28px,4.5vw,48px) 0;border-top:1px solid var(--r);border-bottom:1px solid var(--r)}
+.blocks-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.blk{background:var(--w);padding:clamp(20px,3vw,28px);border:1px solid var(--r)}
+.blk-head{display:flex;align-items:center;gap:9px;margin-bottom:12px}
+.blk-ico{width:32px;height:32px;background:var(--n);display:flex;align-items:center;justify-content:center;color:var(--w);font-size:13px;flex-shrink:0}
+.blk-title{font-size:14px;font-weight:700;color:var(--k);line-height:1.2}
+.blk-sub{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--k3);margin-bottom:11px}
+.blk-list{display:flex;flex-direction:column;gap:6px}
+.blk-li{font-size:12px;color:var(--k2);line-height:1.45;display:flex;align-items:baseline;gap:6px}
+.blk-li::before{content:'·';color:var(--n);font-weight:900;flex-shrink:0}
 
-/* ── STATE ALUMNI EN ACCIÓN ──────────────────────────────── */
-.alumni-sec{background:var(--white);padding:clamp(40px,6vw,64px) 0;border-top:1px solid var(--rule)}
-.alumni-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,64px);align-items:start}
-.alumni-body{font-size:14px;line-height:1.8;color:var(--ink-2);margin-bottom:18px}
-.alumni-body strong{color:var(--ink);font-weight:700}
-.alumni-pts{display:flex;flex-direction:column;gap:9px}
-.alumni-pt{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--ink-2);line-height:1.5}
-.alumni-dot{width:6px;height:6px;border-radius:50%;background:var(--navy);flex-shrink:0;margin-top:6px}
-.alumni-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.astat{padding:20px;background:var(--surface);border:1px solid var(--rule);border-top:3px solid var(--navy)}
-.astat-n{font-size:clamp(26px,3vw,38px);font-weight:900;color:var(--navy);line-height:1;letter-spacing:-.04em;margin-bottom:6px}
-.astat-n sup{font-size:55%;color:var(--gold);letter-spacing:0;vertical-align:super}
-.astat-l{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+/* ── STATE ALUMNI ── */
+.alumni{background:var(--w);padding:clamp(28px,4.5vw,48px) 0;border-bottom:1px solid var(--r)}
+.alumni-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,56px);align-items:start}
+.alumni-body{font-size:13.5px;line-height:1.78;color:var(--k2);margin-bottom:16px}
+.alumni-body strong{color:var(--k);font-weight:700}
+.alumni-pts{display:flex;flex-direction:column;gap:8px}
+.alumni-pt{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--k2);line-height:1.5}
+.alumni-dot{width:5px;height:5px;border-radius:50%;background:var(--n);flex-shrink:0;margin-top:6px}
+.alumni-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ast{padding:18px;background:var(--s);border:1px solid var(--r);border-top:3px solid var(--n)}
+.ast-n{font-size:clamp(24px,2.8vw,34px);font-weight:900;color:var(--n);line-height:1;letter-spacing:-.04em;margin-bottom:5px}
+.ast-n sup{font-size:55%;color:var(--g);letter-spacing:0;vertical-align:super}
+.ast-l{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--k3)}
 
-/* ── LOGOS ───────────────────────────────────────────────── */
-.logos-sec{background:var(--surface);padding:clamp(24px,4vw,40px) 0;border-top:1px solid var(--rule)}
-.logos-lbl{font-size:9.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);text-align:center;margin-bottom:20px}
-.logos-row{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:clamp(14px,4vw,44px)}
-.logo-it{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);opacity:.55;transition:opacity .2s;display:flex;align-items:center;gap:5px}
+/* ── LOGOS ── */
+.logos{background:var(--s2);padding:clamp(20px,3.5vw,34px) 0;border-bottom:1px solid var(--r)}
+.logos-lbl{font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--k3);text-align:center;margin-bottom:16px}
+.logos-row{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:clamp(12px,4vw,40px)}
+.logo-it{display:flex;align-items:center;gap:5px;font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--k3);opacity:.55;transition:opacity .2s}
 .logo-it:hover{opacity:1}
-.logo-it i{font-size:9px;color:var(--navy)}
+.logo-it i{font-size:9px;color:var(--n)}
 
-/* ── CTA BAR ─────────────────────────────────────────────── */
-.cta-bar{background:var(--navy);padding:clamp(36px,5vw,52px) 0}
-.cta-bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
-.cta-lbl{font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:8px}
-.cta-title{font-size:clamp(18px,2.5vw,28px);font-weight:900;color:#fff;letter-spacing:-.02em;margin-bottom:6px}
-.cta-sub{font-size:13px;color:rgba(255,255,255,.5);font-weight:500}
-.cta-actions{display:flex;gap:10px;flex-shrink:0;flex-wrap:wrap}
+/* ── CTA BAR ── */
+.cta-bar{background:var(--n);padding:clamp(28px,4.5vw,44px) 0}
+.cta-bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.cta-l{font-size:9.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.42);margin-bottom:7px}
+.cta-title{font-size:clamp(16px,2.3vw,26px);font-weight:900;color:#fff;letter-spacing:-.02em;margin-bottom:5px}
+.cta-sub{font-size:12.5px;color:rgba(255,255,255,.48);font-weight:500}
+.cta-acts{display:flex;gap:9px;flex-wrap:wrap;flex-shrink:0}
 
-/* ── FOOTER ──────────────────────────────────────────────── */
-.footer{background:#080e1c;padding:22px 0;border-top:1px solid rgba(255,255,255,.06)}
-.footer .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
-.footer-brand{font-size:12px;font-weight:600;color:rgba(255,255,255,.3);display:flex;align-items:center;gap:7px}
-.footer-links{display:flex;gap:16px}
-.footer-link{font-size:12px;color:rgba(255,255,255,.3);transition:color .2s}
-.footer-link:hover{color:rgba(255,255,255,.7)}
-.footer-flags{font-size:16px;display:flex;align-items:center;gap:4px}
-.ffsep{font-size:10px;color:rgba(255,255,255,.18);margin:0 2px}
+/* ── FOOTER ── */
+.foot{background:#06101f;padding:20px 0;border-top:1px solid rgba(255,255,255,.06)}
+.foot .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.foot-brand{display:flex;align-items:center;gap:8px}
+.foot-logo{height:26px;width:auto;filter:brightness(0) invert(1);opacity:.35}
+.foot-t{font-size:11.5px;font-weight:600;color:rgba(255,255,255,.28)}
+.foot-links{display:flex;gap:14px}
+.foot-link{font-size:11.5px;color:rgba(255,255,255,.28);transition:color .2s}
+.foot-link:hover{color:rgba(255,255,255,.7)}
+.foot-flags{font-size:15px;display:flex;align-items:center;gap:3px}
+.foot-sep{font-size:9.5px;color:rgba(255,255,255,.16);margin:0 2px}
 
-/* ── RESPONSIVE ──────────────────────────────────────────── */
-@media(max-width:960px){
+/* ── RESPONSIVE ── */
+@media(max-width:940px){
   .main-grid{grid-template-columns:1fr}
   .alumni-grid{grid-template-columns:1fr}
-  .fmt-cols{grid-template-columns:1fr}
+  .blocks-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:600px){
+  .blocks-grid{grid-template-columns:1fr}
   .cta-bar .wrap{flex-direction:column;text-align:center}
-  .cta-actions{justify-content:center}
-  .footer .wrap{flex-direction:column;text-align:center}
-  .footer-links{justify-content:center}
+  .cta-acts{justify-content:center}
+  .foot .wrap{flex-direction:column;text-align:center}
   .alumni-stats{grid-template-columns:1fr 1fr}
+  .spk-g{grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
 <body>
 
-<!-- NAVBAR -->
+<!-- NAV -->
 <nav class="nav" id="navbar">
   <div class="wrap">
-    <a href="index.html" class="nav-back"><i class="fas fa-arrow-left"></i> State Alumni Chile</a>
-    <div class="nav-logo">AI Summit 2026 <span>State Alumni Chile</span></div>
-    <a href="https://distritov21.cl" target="_blank" class="nav-cta">Aplicar al Summit →</a>
+    <a href="index.html" class="nav-back">
+      <i class="fas fa-arrow-left"></i> State Alumni Chile
+    </a>
+    <div class="nav-brand">
+      <img src="logo.png" alt="State Alumni Chile" class="nav-logo-img"
+           onerror="this.style.display='none'">
+      <div>
+        <div class="nav-logo-txt">AI Summit 2026</div>
+        <span class="nav-logo-sub">State Alumni Chile</span>
+      </div>
+    </div>
+    <a href="https://distritov21.cl" target="_blank" class="nav-cta">
+      Aplicar al Summit →
+    </a>
   </div>
 </nav>
 
@@ -207,57 +196,62 @@ ul{list-style:none}
   <div class="hero-bg"></div>
   <div class="hero-ov"></div>
   <div class="wrap hero-body">
-    <div class="hero-flags">
-      <span class="hfe">🇨🇱</span><span class="hfs"></span>
-      <span class="hfe">🇺🇸</span><span class="hfs"></span>
-      <span class="hfl">Chile – U.S. AI Collaboration</span>
+    <div class="h-flags">
+      <span class="h-fe">🇨🇱</span><span class="h-fs"></span>
+      <span class="h-fe">🇺🇸</span><span class="h-fs"></span>
+      <span class="h-fl">Chile – U.S. AI Collaboration</span>
     </div>
-    <h1 class="hero-title">AI Regional Acceleration<br>Summit 2026</h1>
-    <p class="hero-tagline"><strong>Applied AI</strong> · <strong>Ecosystem Activation</strong> · <strong>Chile–U.S. Collaboration</strong></p>
-    <p class="hero-desc">Un espacio curado que conecta industria, academia y sector público<br>en torno a la adopción aplicada de inteligencia artificial.</p>
-    <div class="hero-meta">
+    <h1 class="h-title">AI Regional Acceleration<br>Summit 2026</h1>
+    <p class="h-tag"><strong>Applied AI</strong> · <strong>Ecosystem Activation</strong> · <strong>Chile–U.S. Collaboration</strong></p>
+    <p class="h-desc">Un espacio curado que conecta industria, academia y sector público en torno a la adopción aplicada de inteligencia artificial.</p>
+    <div class="h-meta">
       <span><i class="fas fa-map-marker-alt"></i>Viña del Mar</span>
       <span><i class="fas fa-calendar"></i>28 mayo 2026</span>
       <span><i class="fas fa-clock"></i>14:30 – 18:30 hrs</span>
     </div>
-    <div class="hero-btns">
-      <a href="https://distritov21.cl" target="_blank" class="btn-w"><i class="fas fa-arrow-right"></i> Solicitar participación</a>
-      <a href="#panel" class="btn-ol">Registro State Alumni</a>
+    <div class="h-btns">
+      <a href="https://distritov21.cl" target="_blank" class="btn-w">
+        <i class="fas fa-arrow-right"></i> Solicitar participación
+      </a>
+      <a href="#main" class="btn-ol">Registro State Alumni</a>
     </div>
-    <p class="hero-note">Cupos limitados &nbsp;·&nbsp; Participación sujeta a confirmación</p>
+    <p class="h-note">Cupos limitados · Participación sujeta a confirmación</p>
   </div>
 </section>
 
-<!-- INFO STRIP -->
+<!-- STRIP -->
 <div class="strip">
   <div class="wrap">
-    <span class="strip-item"><i class="fas fa-building"></i>Distrito V21 · Viña del Mar</span>
-    <span class="strip-item"><i class="fas fa-calendar-alt"></i>28 mayo 2026</span>
-    <span class="strip-item"><i class="fas fa-clock"></i>14:30 – 18:30 hrs</span>
-    <span class="strip-item"><i class="fas fa-lock"></i>Acceso por postulación · Cupos limitados</span>
-    <span class="strip-item"><i class="fas fa-globe-americas"></i>State Alumni Chile · Embajada EE.UU.</span>
+    <span class="strip-it"><i class="fas fa-building"></i>Distrito V21 · Viña del Mar</span>
+    <span class="strip-it"><i class="fas fa-calendar-alt"></i>28 mayo 2026</span>
+    <span class="strip-it"><i class="fas fa-clock"></i>14:30 – 18:30 hrs</span>
+    <span class="strip-it"><i class="fas fa-lock"></i>Cupos limitados · Postulación</span>
+    <span class="strip-it"><i class="fas fa-globe-americas"></i>State Alumni Chile · Embajada EE.UU.</span>
   </div>
 </div>
 
-<!-- MAIN TWO-COLUMN -->
-<section class="main-sec" id="panel">
+<!-- MAIN 2-COL -->
+<section class="main" id="main">
   <div class="wrap">
     <div class="main-grid">
 
       <!-- LEFT -->
       <div>
-        <div class="sec-lbl">Chile – U.S. AI Collaboration</div>
-        <h2 class="sec-h2">Este Summit articula actores de Chile y Estados Unidos en torno a la inteligencia artificial, conectando:</h2>
-        <div class="blist">
-          <div class="bi"><div class="bi-ico"><i class="fas fa-microchip"></i></div>líderes de empresas tecnológicas globales</div>
-          <div class="bi"><div class="bi-ico"><i class="fas fa-star"></i></div>red Exchange Alumni del U.S. Department of State</div>
-          <div class="bi"><div class="bi-ico"><i class="fas fa-university"></i></div>academia, sector público y ecosistema de innovación</div>
-          <div class="bi"><div class="bi-ico"><i class="fas fa-arrow-right"></i></div>enfocado en <strong>conexión real</strong> y colaboración aplicada</div>
+        <div class="lbl">Chile – U.S. AI Collaboration</div>
+        <h2 class="h2">Este Summit articula actores de Chile y Estados Unidos en torno a la inteligencia artificial, conectando:</h2>
+        <div class="bl">
+          <div class="bi"><div class="bi-i"><i class="fas fa-microchip"></i></div>líderes de empresas tecnológicas globales</div>
+          <div class="bi"><div class="bi-i"><i class="fas fa-star"></i></div>red Exchange Alumni del U.S. Department of State</div>
+          <div class="bi"><div class="bi-i"><i class="fas fa-university"></i></div>academia, sector público y ecosistema de innovación</div>
+          <div class="bi"><div class="bi-i"><i class="fas fa-arrow-right"></i></div>enfocado en <strong>conexión real</strong> y colaboración aplicada</div>
         </div>
-        <div class="div-rule"></div>
-        <div class="mod-lbl">Moderación:</div>
-        <div class="mod-card">
-          <div class="mod-av">LO</div>
+        <div class="hr"></div>
+        <div class="mod-l">Moderación:</div>
+        <div class="mod">
+          <div class="mod-ph">
+            <img src="leslie.jpg" alt="Leslie Olave Rojas"
+                 onerror="this.style.display='none'">
+          </div>
           <div>
             <div class="mod-name">Leslie Olave Rojas</div>
             <div class="mod-role">State Alumni Chile · Mindset Global Partners<br>Exchange Alumni · U.S. Department of State</div>
@@ -267,29 +261,46 @@ ul{list-style:none}
 
       <!-- RIGHT: Speakers -->
       <div>
-        <div class="sec-lbl">Panel: AI as a</div>
-        <h2 class="sec-h2">Regional Accelerator 🇺🇸</h2>
-        <div class="spk-grid">
+        <div class="lbl">Panel: AI as a</div>
+        <h2 class="h2">Regional Accelerator 🇺🇸</h2>
+        <div class="spk-g">
+
           <div class="spk">
-            <div class="spk-av">MA</div>
+            <div class="spk-ph">
+              <img src="rosa.jpg" alt="Marcio Aguiar"
+                   onerror="this.style.display='none'">
+            </div>
             <div class="spk-name">Marcio Aguiar</div>
-            <div class="spk-tag">NVIDIA</div>
+            <div class="spk-org">NVIDIA</div>
           </div>
+
           <div class="spk">
-            <div class="spk-av">CL</div>
+            <div class="spk-ph">
+              <img src="marcela.jpg" alt="Cristóbal Lea-Plaza"
+                   onerror="this.style.display='none'">
+            </div>
             <div class="spk-name">Cristóbal Lea-Plaza</div>
-            <div class="spk-tag">Google</div>
+            <div class="spk-org">Google</div>
           </div>
+
           <div class="spk">
-            <div class="spk-av">RD</div>
+            <div class="spk-ph">
+              <img src="darian.jpg" alt="Rodrigo Durán"
+                   onerror="this.style.display='none'">
+            </div>
             <div class="spk-name">Rodrigo Durán</div>
-            <div class="spk-tag">CENIA</div>
+            <div class="spk-org">CENIA</div>
           </div>
+
           <div class="spk">
-            <div class="spk-av">RT</div>
+            <div class="spk-ph">
+              <img src="mariajose.jpg" alt="Dra. Romina Torres"
+                   onerror="this.style.display='none'">
+            </div>
             <div class="spk-name">Dra. Romina Torres</div>
-            <div class="spk-tag">UAI · Data Observatory</div>
+            <div class="spk-org">UAI · Data Observatory</div>
           </div>
+
         </div>
       </div>
 
@@ -297,51 +308,51 @@ ul{list-style:none}
   </div>
 </section>
 
-<!-- FORMAT 3-COL -->
-<div class="fmt-strip">
+<!-- COMPACT BLOCKS -->
+<div class="blocks">
   <div class="wrap">
-    <div class="fmt-cols">
+    <div class="blocks-grid">
 
-      <div class="fmt-col">
-        <div class="fmt-head">
-          <div class="fmt-icon"><i class="fas fa-comments"></i></div>
-          <div class="fmt-title">Panel central<br>de alto nivel</div>
+      <div class="blk">
+        <div class="blk-head">
+          <div class="blk-ico"><i class="fas fa-comments"></i></div>
+          <div class="blk-title">Panel central<br>de alto nivel</div>
         </div>
-        <div class="fmt-sub">Conversación estratégica</div>
-        <div class="fmt-list">
-          <div class="fmt-li">Sin formato expositivo</div>
-          <div class="fmt-li">Conversación de alto nivel</div>
-          <div class="fmt-li">Actores de decisión reales</div>
-          <div class="fmt-li">Participación activa</div>
+        <div class="blk-sub">Conversación estratégica</div>
+        <div class="blk-list">
+          <div class="blk-li">Sin formato expositivo</div>
+          <div class="blk-li">Conversación de alto nivel</div>
+          <div class="blk-li">Actores de decisión reales</div>
+          <div class="blk-li">Participación activa</div>
         </div>
       </div>
 
-      <div class="fmt-col">
-        <div class="fmt-head">
-          <div class="fmt-icon"><i class="fas fa-sitemap"></i></div>
-          <div class="fmt-title">AI Dialogue<br>Tables</div>
+      <div class="blk">
+        <div class="blk-head">
+          <div class="blk-ico"><i class="fas fa-sitemap"></i></div>
+          <div class="blk-title">AI Dialogue<br>Tables</div>
         </div>
-        <div class="fmt-sub">Trabajo en grupos</div>
-        <div class="fmt-list">
-          <div class="fmt-li">IA para productividad y PYMEs</div>
-          <div class="fmt-li">Talento y futuro del trabajo</div>
-          <div class="fmt-li">Sector público</div>
-          <div class="fmt-li">Desarrollo territorial</div>
-          <div class="fmt-li">Datos y gobernanza</div>
+        <div class="blk-sub">Trabajo en grupos</div>
+        <div class="blk-list">
+          <div class="blk-li">IA para productividad y PYMEs</div>
+          <div class="blk-li">Talento y futuro del trabajo</div>
+          <div class="blk-li">Sector público</div>
+          <div class="blk-li">Desarrollo territorial</div>
+          <div class="blk-li">Datos y gobernanza</div>
         </div>
       </div>
 
-      <div class="fmt-col">
-        <div class="fmt-head">
-          <div class="fmt-icon"><i class="fas fa-link"></i></div>
-          <div class="fmt-title">Networking<br>estratégico</div>
+      <div class="blk">
+        <div class="blk-head">
+          <div class="blk-ico"><i class="fas fa-link"></i></div>
+          <div class="blk-title">Networking<br>estratégico</div>
         </div>
-        <div class="fmt-sub">Conexión entre actores</div>
-        <div class="fmt-list">
-          <div class="fmt-li">Networking curado</div>
-          <div class="fmt-li">Interacción diseñada</div>
-          <div class="fmt-li">No formato masivo</div>
-          <div class="fmt-li">Articulación público-privada</div>
+        <div class="blk-sub">Conexión entre actores</div>
+        <div class="blk-list">
+          <div class="blk-li">Networking curado</div>
+          <div class="blk-li">Interacción diseñada</div>
+          <div class="blk-li">No formato masivo</div>
+          <div class="blk-li">Articulación público-privada</div>
         </div>
       </div>
 
@@ -350,12 +361,12 @@ ul{list-style:none}
 </div>
 
 <!-- STATE ALUMNI EN ACCIÓN -->
-<section class="alumni-sec">
+<section class="alumni">
   <div class="wrap">
     <div class="alumni-grid">
       <div>
-        <div class="sec-lbl">State Alumni en acción</div>
-        <h2 class="sec-h2">El Summit activa la red Exchange Alumni del U.S. Department of State</h2>
+        <div class="lbl">State Alumni en acción</div>
+        <h2 class="h2">El Summit activa la red Exchange Alumni del U.S. Department of State</h2>
         <p class="alumni-body">Facilitando <strong>conexión</strong> entre actores del ecosistema y promoviendo colaboración aplicada en inteligencia artificial.</p>
         <div class="alumni-pts">
           <div class="alumni-pt"><span class="alumni-dot"></span>Alumni del Departamento de Estado participan activamente</div>
@@ -365,17 +376,17 @@ ul{list-style:none}
         </div>
       </div>
       <div class="alumni-stats">
-        <div class="astat"><div class="astat-n">2,800<sup>+</sup></div><div class="astat-l">Alumni en Chile</div></div>
-        <div class="astat"><div class="astat-n">40<sup>+</sup></div><div class="astat-l">Años de programas</div></div>
-        <div class="astat"><div class="astat-n">18</div><div class="astat-l">Programas activos</div></div>
-        <div class="astat"><div class="astat-n">160<sup>+</sup></div><div class="astat-l">Países conectados</div></div>
+        <div class="ast"><div class="ast-n">2,800<sup>+</sup></div><div class="ast-l">Alumni en Chile</div></div>
+        <div class="ast"><div class="ast-n">40<sup>+</sup></div><div class="ast-l">Años de programas</div></div>
+        <div class="ast"><div class="ast-n">18</div><div class="ast-l">Programas activos</div></div>
+        <div class="ast"><div class="ast-n">160<sup>+</sup></div><div class="ast-l">Países conectados</div></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- LOGOS -->
-<div class="logos-sec">
+<div class="logos">
   <div class="wrap">
     <div class="logos-lbl">Organiza &amp; apoya</div>
     <div class="logos-row">
@@ -395,11 +406,11 @@ ul{list-style:none}
 <div class="cta-bar">
   <div class="wrap">
     <div>
-      <div class="cta-lbl">Postulación abierta</div>
+      <div class="cta-l">Postulación abierta</div>
       <div class="cta-title">¿Tomás decisiones sobre IA hoy?</div>
-      <div class="cta-sub">28 mayo 2026 &nbsp;·&nbsp; Distrito V21, Viña del Mar &nbsp;·&nbsp; Cupos limitados</div>
+      <div class="cta-sub">28 mayo 2026 · Distrito V21, Viña del Mar · Cupos limitados</div>
     </div>
-    <div class="cta-actions">
+    <div class="cta-acts">
       <a href="https://distritov21.cl" target="_blank" class="btn-w">Solicitar participación →</a>
       <a href="index.html" class="btn-ol">Conocer State Alumni</a>
     </div>
@@ -407,27 +418,30 @@ ul{list-style:none}
 </div>
 
 <!-- FOOTER -->
-<footer class="footer">
+<footer class="foot">
   <div class="wrap">
-    <div class="footer-brand"><i class="fas fa-star"></i>State Alumni Chile · AI Summit 2026</div>
-    <div class="footer-links">
-      <a href="index.html" class="footer-link">← Volver al sitio</a>
-      <a href="#panel" class="footer-link">Speakers</a>
-      <a href="https://distritov21.cl" target="_blank" class="footer-link">Aplicar</a>
+    <div class="foot-brand">
+      <img src="logo.png" alt="State Alumni Chile" class="foot-logo"
+           onerror="this.style.display='none'">
+      <span class="foot-t">State Alumni Chile · AI Summit 2026</span>
     </div>
-    <div class="footer-flags">🇺🇸<span class="ffsep">×</span>🇨🇱</div>
+    <div class="foot-links">
+      <a href="index.html" class="foot-link">← Volver al sitio</a>
+      <a href="#main" class="foot-link">Speakers</a>
+      <a href="https://distritov21.cl" target="_blank" class="foot-link">Aplicar</a>
+    </div>
+    <div class="foot-flags">🇺🇸<span class="foot-sep">×</span>🇨🇱</div>
   </div>
 </footer>
 
 <script>
-window.addEventListener('scroll', () => {
-  document.getElementById('navbar').style.boxShadow =
-    window.scrollY > 20 ? '0 2px 20px rgba(0,48,135,.1)' : '';
-}, {passive:true});
-
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const t = document.querySelector(a.getAttribute('href'));
+window.addEventListener('scroll',()=>{
+  document.getElementById('navbar').style.boxShadow=
+    window.scrollY>20?'0 2px 18px rgba(0,40,104,.1)':'';
+},{passive:true});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
     if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}
   });
 });
