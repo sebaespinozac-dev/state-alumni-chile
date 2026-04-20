@@ -843,6 +843,17 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
   .gal-orgs{grid-template-columns:1fr}
   .gal-tabs{gap:6px}
 }
+
+/* ── GAL INFO CARD ── */
+.gal-info{display:flex;gap:10px;flex-wrap:wrap;padding:18px 0 4px;border-bottom:1px solid var(--rule);margin-bottom:18px}
+.gal-info-block{flex:1;min-width:180px;background:var(--surface);border:1px solid var(--rule);border-top:3px solid var(--navy);padding:14px 16px}
+.gal-info-block--red{border-top-color:var(--red)}
+.gal-ib-label{font-size:8.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.gal-ib-label i{color:var(--navy);font-size:8px}
+.gal-ib-list{display:flex;flex-direction:column;gap:5px}
+.gal-ib-li{font-size:12px;line-height:1.45;color:var(--ink-2);display:flex;align-items:baseline;gap:6px}
+.gal-ib-li::before{content:'▸';color:var(--navy);font-size:8px;flex-shrink:0}
+.gal-ib-focus{display:inline-flex;align-items:center;gap:5px;margin-top:10px;padding:4px 10px;background:var(--navy-lt);font-size:10px;font-weight:700;color:var(--navy);letter-spacing:.04em}
 </style>
 </head>
 <body>
@@ -1337,6 +1348,25 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
           <span class="gal-hbadge"><i class="fas fa-circle"></i> Inmigración e Inclusión</span>
         </div>
       </div>
+      <div class="gal-info">
+        <div class="gal-info-block">
+          <div class="gal-ib-label"><i class="fas fa-calendar-check"></i>Actividades del evento</div>
+          <div class="gal-ib-list">
+            <div class="gal-ib-li">Seminario con paneles sobre diversidad, comunidades indígenas y discapacidad</div>
+            <div class="gal-ib-li">Participación de autoridades, academia y sociedad civil</div>
+            <div class="gal-ib-li">Espacio de diálogo abierto entre actores del ecosistema</div>
+          </div>
+        </div>
+        <div class="gal-info-block gal-info-block--red">
+          <div class="gal-ib-label"><i class="fas fa-star"></i>Side Event</div>
+          <div class="gal-ib-list">
+            <div class="gal-ib-li">Taller de innovación social enfocado en migración</div>
+            <div class="gal-ib-li">Actividad práctica colaborativa</div>
+            <div class="gal-ib-li">Formato jornada completa · Seminario + Taller</div>
+          </div>
+          <span class="gal-ib-focus"><i class="fas fa-compass"></i>Enfoque: inclusión, diversidad y territorio</span>
+        </div>
+      </div>
       <div class="gal-sub">Evento Principal · Seminario UCN</div>
       <div class="gal-grid">
         <div class="gal-item"><img src="eventos/antofagasta/image1.png" alt=""><div class="gal-cap"><span>Participación del público</span></div></div>
@@ -1367,6 +1397,25 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
           <span class="gal-hbadge"><i class="fas fa-circle"></i> Emprendimiento, Ciencia y Educación</span>
         </div>
       </div>
+      <div class="gal-info">
+        <div class="gal-info-block">
+          <div class="gal-ib-label"><i class="fas fa-calendar-check"></i>Actividades del evento</div>
+          <div class="gal-ib-list">
+            <div class="gal-ib-li">Paneles sobre tendencias, innovación y desarrollo regional</div>
+            <div class="gal-ib-li">Focus groups con líderes del ecosistema emprendedor</div>
+            <div class="gal-ib-li">Networking en Museo Baburizza</div>
+          </div>
+        </div>
+        <div class="gal-info-block gal-info-block--red">
+          <div class="gal-ib-label"><i class="fas fa-star"></i>Side Event · Elevate Your Pitch</div>
+          <div class="gal-ib-list">
+            <div class="gal-ib-li">Taller intensivo de pitch en inglés</div>
+            <div class="gal-ib-li">Presentaciones de emprendedores regionales</div>
+            <div class="gal-ib-li">Retroalimentación de expertos internacionales</div>
+          </div>
+          <span class="gal-ib-focus"><i class="fas fa-compass"></i>Enfoque: innovación + ecosistema emprendedor</span>
+        </div>
+      </div>
       <div class="gal-sub">Evento Principal · Instituto Chileno Norteamericano</div>
       <div class="gal-grid">
         <div class="gal-item"><img src="eventos/valparaiso/image2.png" alt=""><div class="gal-cap"><span>Paneles sobre innovación regional</span></div></div>
@@ -1393,6 +1442,18 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
           <span class="gal-hbadge"><i class="fas fa-circle"></i> Democracia, Sostenibilidad y Territorio</span>
         </div>
       </div>
+      <div class="gal-info">
+        <div class="gal-info-block">
+          <div class="gal-ib-label"><i class="fas fa-calendar-check"></i>Actividades del evento</div>
+          <div class="gal-ib-list">
+            <div class="gal-ib-li">Panel: Sostenibilidad territorial</div>
+            <div class="gal-ib-li">Panel: Descentralización y gobernanza regional</div>
+            <div class="gal-ib-li">Participación de autoridades locales, academia y sector público</div>
+            <div class="gal-ib-li">Taller: Comunicación para el liderazgo</div>
+          </div>
+          <span class="gal-ib-focus"><i class="fas fa-compass"></i>Enfoque: desarrollo regional y territorio</span>
+        </div>
+      </div>
       <div class="gal-sub">Evento Principal · Universidad Austral de Chile</div>
       <div class="gal-grid">
         <div class="gal-item"><img src="eventos/valdivia/image2.png" alt=""><div class="gal-cap"><span>Panel de sostenibilidad territorial</span></div></div>
@@ -1413,6 +1474,17 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
           <div class="gal-hcity">Punta Arenas</div>
           <div class="gal-hplace">Universidad de Magallanes · American Corner</div>
           <span class="gal-hbadge"><i class="fas fa-circle"></i> Acción Climática</span>
+        </div>
+      </div>
+      <div class="gal-info">
+        <div class="gal-info-block">
+          <div class="gal-ib-label"><i class="fas fa-calendar-check"></i>Actividades del evento</div>
+          <div class="gal-ib-list">
+            <div class="gal-ib-li">Conferencias sobre cambio climático desde perspectiva antártica</div>
+            <div class="gal-ib-li">Workshop de divulgación científica</div>
+            <div class="gal-ib-li">Espacio de networking entre científicos y alumni</div>
+          </div>
+          <span class="gal-ib-focus"><i class="fas fa-compass"></i>Enfoque: ciencia, territorio extremo y sostenibilidad</span>
         </div>
       </div>
       <div class="gal-sub">Evento Principal · Universidad de Magallanes</div>
@@ -1437,6 +1509,18 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
           <div class="gal-hcity">Santiago</div>
           <div class="gal-hplace">Instituto Chileno Norteamericano · American Spaces</div>
           <span class="gal-hbadge"><i class="fas fa-circle"></i> Innovación y Futuro — Cierre Bicentenario</span>
+        </div>
+      </div>
+      <div class="gal-info">
+        <div class="gal-info-block">
+          <div class="gal-ib-label"><i class="fas fa-calendar-check"></i>Actividades del evento</div>
+          <div class="gal-ib-list">
+            <div class="gal-ib-li">Encuentro final que consolida aprendizajes de la gira nacional</div>
+            <div class="gal-ib-li">Participación de comunidad alumni, expertos y actores clave</div>
+            <div class="gal-ib-li">Diálogo intergeneracional y articulación entre alumni</div>
+            <div class="gal-ib-li">Cierre del ciclo bicentenario 1824–2024</div>
+          </div>
+          <span class="gal-ib-focus"><i class="fas fa-compass"></i>Enfoque: visión país + proyección futura</span>
         </div>
       </div>
       <div class="gal-sub">Cierre de la Gira Nacional · Instituto Chileno Norteamericano</div>
